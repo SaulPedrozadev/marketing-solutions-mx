@@ -1,554 +1,189 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
+const process_steps = [
+  { n: '01', title: 'Analizamos tu marca, mercado y competencia', desc: 'Hacemos un diagnóstico completo para entender exactamente dónde está tu negocio y qué oportunidades reales existen en tu sector.' },
+  { n: '02', title: 'Creamos estrategias personalizadas', desc: 'Nada de plantillas genéricas. Cada plan está diseñado específicamente para tu negocio, tu audiencia y tus metas de crecimiento.' },
+  { n: '03', title: 'Definimos objetivos claros y medibles', desc: 'Establecemos KPIs concretos desde el día uno para que siempre tengas claridad sobre qué estamos logrando y hacia dónde vamos.' },
+  { n: '04', title: 'Medimos resultados y optimizamos constantemente', desc: 'Los datos guían cada decisión. Analizamos el rendimiento en tiempo real y ajustamos para maximizar el retorno de tu inversión.' },
+  { n: '05', title: 'Comunicación constante y transparente', desc: 'Reportes claros, acceso directo al equipo y actualizaciones periódicas. Sin letra chica, sin sorpresas — solo resultados.' },
+  { n: '06', title: 'Ajustamos con base en datos reales y tu audiencia', desc: 'Escuchamos el comportamiento de tus usuarios y evolucionamos la estrategia con ellos, manteniéndola siempre vigente y efectiva.' },
+];
 const services = [
-  { icon: '🌐', title: 'Diseño Web', desc: 'Sitios modernos y ultra rápidos que convierten visitantes en clientes.', href: '/servicios/diseno-web', tag: 'Landing · Business · E-Commerce' },
-  { icon: '🔍', title: 'SEO Premium', desc: 'Primeros lugares en Google para atraer tráfico calificado de forma sostenida.', href: '/servicios/seo', tag: 'On-page · Off-page · Local' },
-  { icon: '📣', title: 'Google Ads', desc: 'Captura clientes en el momento exacto que te buscan en Google.', href: '/servicios/google-ads', tag: 'Search · Display · Shopping' },
-  { icon: '📱', title: 'Campañas META', desc: 'Anuncios en Facebook e Instagram de alto rendimiento para maximizar tu ROI.', href: '/servicios/meta-ads', tag: 'Facebook · Instagram · Retargeting' },
-  { icon: '💬', title: 'Redes Sociales', desc: 'Gestión estratégica de contenido que conecta tu marca con su audiencia real.', href: '/servicios/redes-sociales', tag: 'Contenido · Comunidad · Estrategia' },
-  { icon: '✉️', title: 'Email Marketing', desc: 'Secuencias automatizadas que nutren tus leads y generan ventas en piloto.', href: '/servicios/email-marketing', tag: 'Flujos · Newsletters · Automatización' },
-  { icon: '🎨', title: 'Identidad de Marca', desc: 'Logotipo, paleta y manual de marca para construir una imagen memorable.', href: '/servicios/identidad-marca', tag: 'Logo · Branding · Manual' },
-  { icon: '📊', title: 'Analítica y Reportes', desc: 'Medición en tiempo real y decisiones basadas en datos concretos.', href: '/servicios/analitica', tag: 'GA4 · Dashboards · KPIs' },
+  { icon: '📱', title: 'Gestión Social', desc: 'Contenido estratégico y dinámico para conectar con tu audiencia en redes sociales.', href: '/servicios/redes-sociales' },
+  { icon: '🎯', title: 'Campañas META', desc: 'Anuncios de alta conversión en Facebook e Instagram para maximizar tu inversión.', href: '/servicios/meta-ads' },
+  { icon: '🔍', title: 'SEO Premium', desc: 'Primeros resultados en Google para atraer tráfico calificado a tu sitio web.', href: '/servicios/seo' },
+  { icon: '🌐', title: 'Diseño Web', desc: 'Sitios modernos y optimizados para convertir visitantes en clientes reales.', href: '/servicios/diseno-web' },
+  { icon: '📣', title: 'Google Ads', desc: 'Campañas de búsqueda pagada para captar clientes en el momento exacto que te buscan.', href: '/servicios/google-ads' },
+  { icon: '✉️', title: 'Email Marketing', desc: 'Secuencias automatizadas que nutren tus leads y generan ventas en piloto automático.', href: '/servicios/email-marketing' },
+  { icon: '🎨', title: 'Identidad de Marca', desc: 'Diseño de logotipo, paleta y guía de estilo para construir una marca memorable.', href: '/servicios/identidad-marca' },
+  { icon: '📊', title: 'Analítica y Reportes', desc: 'Medición en tiempo real de tus campañas para tomar decisiones basadas en datos reales.', href: '/servicios/analitica' },
 ];
-
-const process = [
-  { n: '01', title: 'Diagnóstico', desc: 'Analizamos tu marca, mercado y competencia para encontrar oportunidades reales.' },
-  { n: '02', title: 'Estrategia', desc: 'Diseñamos un plan personalizado — sin plantillas — para tu negocio y audiencia.' },
-  { n: '03', title: 'KPIs claros', desc: 'Objetivos medibles desde el día uno para que veas cada avance.' },
-  { n: '04', title: 'Ejecución', desc: 'Implementamos, medimos y optimizamos para maximizar tu inversión.' },
-  { n: '05', title: 'Reportes', desc: 'Acceso directo al equipo, actualizaciones constantes. Sin sorpresas.' },
-  { n: '06', title: 'Evolución', desc: 'Ajustamos en tiempo real con base en datos y comportamiento de tu audiencia.' },
-];
-
 const packages = [
-  {
-    name: 'Landing Express',
-    desc: 'Para lanzamientos rápidos y campañas pagadas.',
-    price: '$4,000', before: '$5,500', currency: 'MXN',
-    features: ['Diseño UI/UX de alta conversión', 'Velocidad <1 segundo', 'Copywriting persuasivo', 'Integración WhatsApp', 'Formulario de captura', '1 mes soporte'],
-    featured: false,
-  },
-  {
-    name: 'Business Site',
-    desc: 'Autoridad digital y posicionamiento local.',
-    price: '$5,500', before: '$7,500', currency: 'MXN',
-    features: ['6 secciones profesionales', 'SEO Local avanzado', 'Google Analytics 4', 'Google Maps', 'Optimización móvil', '2 meses soporte'],
-    featured: true,
-  },
-  {
-    name: 'E-Commerce Max',
-    desc: 'Tu sistema completo de ventas online.',
-    price: '$15,500', before: '$17,000', currency: 'MXN',
-    features: ['Shopify o Webflow', 'Stripe / PayPal', 'Gestión de inventario', 'Emails automáticos', 'Recuperación de carritos', '3 meses soporte premium'],
-    featured: false,
-  },
+  { num: '01', name: 'Landing Express', desc: 'Ideal para lanzamientos rápidos y campañas pagadas.', price: '$4,000', before: '$5,500', currency: 'MXN', features: ['Diseño UI/UX de alta conversión','Optimización ultra rápida (<1s)','Copywriting persuasivo','Integración con WhatsApp','Formulario de captura leads','1 mes de soporte técnico'], featured: false },
+  { num: '02', name: 'Business Site', desc: 'Autoridad digital para posicionarte localmente.', price: '$5,500', before: '$7,500', currency: 'MXN', features: ['6 Secciones profesionales','Estrategia SEO Local avanzada','Google Analytics 4 configurado','Integración Google Maps','Optimización para móviles','2 meses de soporte'], featured: true },
+  { num: '03', name: 'E-Commerce Max', desc: 'Tu sistema completo de ventas online.', price: '$15,500', before: '$17,000', currency: 'MXN', features: ['Tienda Shopify o Webflow','Pasarela Stripe / PayPal','Gestión de inventario','Automatización de correos','Recuperación de carritos','3 meses soporte premium'], featured: false },
 ];
-
 const faqs = [
-  { q: '¿Trabajan con contratos forzosos?', a: 'No. Trabajamos con acuerdos mensuales sin permanencia mínima. Sin letra chica, sin sorpresas.' },
-  { q: '¿Cuánto tarda en verse resultados?', a: 'En campañas pagadas los primeros resultados son inmediatos. En SEO orgánico entre 3 y 6 meses. Siempre establecemos expectativas realistas.' },
-  { q: '¿Trabajan con negocios pequeños?', a: 'Sí. Trabajamos con emprendedores, PyMEs y empresas medianas. Ajustamos el plan a tu etapa y presupuesto.' },
-  { q: '¿Qué incluye la consulta gratis?', a: '30 minutos analizando tu presencia digital actual e identificando oportunidades — sin compromiso de contratación.' },
-  { q: '¿Tienen experiencia en mi industria?', a: 'Hemos trabajado con restaurantes, clínicas, inmobiliarias, despachos legales, e-commerce, coaches y más. Nos adaptamos a tu sector.' },
+  { q: '¿Quiénes somos en Marketing Solutions?', a: 'Somos una agencia de marketing en México especializada en crear presencia digital real para marcas que buscan crecer, posicionarse y ser relevantes en el entorno digital.' },
+  { q: '¿Qué hacemos?', a: 'Creamos estrategias de marketing digital enfocadas en fortalecer la presencia de las marcas. No solo ejecutamos acciones, sino que trabajamos en cómo se ve, cómo comunica y cómo se posiciona cada negocio frente a su audiencia.' },
+  { q: '¿Cómo entendemos la presencia digital?', a: 'Para nosotros, la presencia digital es la combinación correcta de identidad, visibilidad y estrategia. Es lograr que una marca no solo esté presente, sino que sea reconocible, coherente y confiable en cada punto de contacto.' },
+  { q: '¿Por qué elegir a Marketing Solutions como tu aliado?', a: 'Porque no trabajamos con fórmulas genéricas. Acompañamos a cada cliente como un aliado estratégico, enfocados en construir una presencia digital sostenible y orientada a resultados reales.' },
+  { q: '¿Trabajan con contratos forzosos?', a: 'No. Trabajamos con acuerdos mensuales sin permanencia mínima. Sin letra chica ni sorpresas.' },
 ];
 ---
-
-<Layout title="Agencia de Marketing Digital en CDMX" canonical="/">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="hero-dots dots-bg" aria-hidden="true"></div>
-    <div class="container hero-inner">
-      <div class="hero-badge animate">
-        <span class="badge-dot"></span>
-        Agencia de Marketing · México 🇲🇽
-      </div>
-      <h1 class="animate delay-1">
-        Presencia digital <span class="grad-text">real</span><br />para tu negocio
-      </h1>
-      <p class="animate delay-2">
-        Ayudamos a emprendedores y empresas a fortalecer su presencia digital, conectar con su audiencia y generar oportunidades reales de crecimiento.
-      </p>
-      <div class="hero-ctas animate delay-3">
-        <a href="#contacto" class="btn btn-primary">
-          Solicitar consulta gratis
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#servicios" class="btn btn-outline">Ver servicios</a>
-      </div>
-
-      <div class="hero-stats animate delay-3">
-        <div class="stat">
-          <span class="stat-n grad-text">+40%</span>
-          <span class="stat-l">Incremento promedio en ventas</span>
-        </div>
-        <div class="stat-sep"></div>
-        <div class="stat">
-          <span class="stat-n grad-text">+150</span>
-          <span class="stat-l">Proyectos entregados</span>
-        </div>
-        <div class="stat-sep"></div>
-        <div class="stat">
-          <span class="stat-n grad-text">5+</span>
-          <span class="stat-l">Ciudades en México</span>
-        </div>
-      </div>
+<Layout title="Agencia de Marketing en CDMX" description="En Marketing Solutions somos una agencia de marketing en CDMX que ayuda a emprendedores y empresas a fortalecer su presencia digital, conectar con su audiencia y generar oportunidades reales de crecimiento." canonical="/">
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <div class="hero-pill"><span class="pill-dot"></span>Agencia de Marketing · CDMX 🇲🇽</div>
+    <h1>Agencia de marketing en CDMX<br/>enfocada en crear presencia<br/><span class="grad-text">real para tu negocio</span></h1>
+    <p>En Marketing Solutions ayudamos a emprendedores y empresas a fortalecer su presencia digital, conectar con su audiencia y generar oportunidades reales de crecimiento.</p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary">Comienza ahora <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#servicios" class="btn btn-outline">Ver servicios</a>
     </div>
+  </div>
+  <div class="ticker" aria-hidden="true"><div class="ticker-track">{['Diseño Web · ','SEO · ','Google Ads · ','META Ads · ','Redes Sociales · ','Email Marketing · ','Branding · ','Analítica · ','Diseño Web · ','SEO · ','Google Ads · ','META Ads · ','Redes Sociales · ','Email Marketing · ','Branding · ','Analítica · '].map(t=><span>{t}</span>)}</div></div>
+</section>
 
-    <!-- Ticker -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track">
-        {['Diseño Web', 'SEO', 'Google Ads', 'META Ads', 'Redes Sociales', 'Email Marketing', 'Branding', 'Analítica'].map(t => (
-          <span>{t} <em>·</em></span>
-        ))}
-        {['Diseño Web', 'SEO', 'Google Ads', 'META Ads', 'Redes Sociales', 'Email Marketing', 'Branding', 'Analítica'].map(t => (
-          <span>{t} <em>·</em></span>
-        ))}
-      </div>
-    </div>
-  </section>
+<section class="section bg-dark" id="proceso">
+  <div class="container">
+    <div class="section-head"><p class="label">Metodología</p><h2>Nuestra forma de <span class="grad-text">trabajar</span></h2><p>Como agencia de marketing en CDMX, definimos cada estrategia después de analizar a fondo el modelo de negocio, su mercado y sus oportunidades reales de crecimiento.</p></div>
+    <div class="process-grid">{process_steps.map(s=><div class="process-card"><span class="p-num grad-text">{s.n}</span><h3>{s.title}</h3><p>{s.desc}</p></div>)}</div>
+  </div>
+</section>
 
-  <!-- SERVICIOS -->
-  <section class="section" id="servicios">
-    <div class="container">
-      <div class="section-head">
-        <p class="label">Servicios</p>
-        <h2>Todo lo que tu negocio<br />necesita para <span class="grad-text">crecer</span></h2>
-        <p>Estrategias diseñadas para posicionar tu marca, atraer clientes y maximizar tu retorno de inversión.</p>
-      </div>
-      <div class="services-grid">
-        {services.map(s => (
-          <a href={s.href} class="service-card card-border">
-            <span class="s-icon">{s.icon}</span>
-            <h3>{s.title}</h3>
-            <p>{s.desc}</p>
-            <span class="s-tag">{s.tag}</span>
-            <span class="s-arrow">→</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+<section class="section" id="servicios">
+  <div class="container">
+    <div class="section-head"><p class="label">Servicios</p><h2>Servicios de marketing digital para <span class="grad-text">hacer crecer tu negocio</span></h2><p>Soluciones estratégicas diseñadas para posicionar tu marca, atraer clientes y maximizar tu retorno de inversión.</p></div>
+    <div class="services-grid">{services.map(s=><a href={s.href} class="service-card"><div class="s-top"><span class="s-icon">{s.icon}</span><span class="s-arrow grad-text">→</span></div><h3>{s.title}</h3><p>{s.desc}</p><span class="s-cta">Ver servicio →</span></a>)}</div>
+  </div>
+</section>
 
-  <!-- PROCESO -->
-  <section class="section" style="background: var(--bg-dark);">
-    <div class="container">
-      <div class="section-head">
-        <p class="label">Metodología</p>
-        <h2>Nuestra forma de <span class="grad-text">trabajar</span></h2>
-        <p>Definimos cada estrategia después de analizar a fondo tu modelo de negocio, mercado y oportunidades reales.</p>
-      </div>
-      <div class="process-grid">
-        {process.map(step => (
-          <div class="process-card">
-            <span class="p-num grad-text">{step.n}</span>
-            <h3>{step.title}</h3>
-            <p>{step.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+<section class="cta-mid">
+  <div class="container"><div class="cta-mid-inner"><div><p class="label">Agencia de Marketing · CDMX</p><h2>Construyamos la estrategia correcta para tu negocio en CDMX</h2><p>Si buscas una agencia de marketing en CDMX que te ayude a crear presencia digital real y sostenible, en Marketing Solutions estamos listos para acompañarte.</p></div><a href="/#contacto" class="btn btn-primary">Quiero mi estrategia →</a></div></div>
+</section>
 
-  <!-- PRECIOS -->
-  <section class="section" id="precios">
-    <div class="container">
-      <div class="section-head">
-        <p class="label">Precios</p>
-        <h2>Paquetes <span class="grad-text">sin contratos</span> forzosos</h2>
-        <p>Diseñados para cada etapa de tu negocio. Sin letra chica, sin sorpresas.</p>
-      </div>
-      <div class="pricing-grid">
-        {packages.map(pkg => (
-          <div class={`pricing-card card-border ${pkg.featured ? 'pricing-featured' : ''}`}>
-            {pkg.featured && <span class="pricing-badge">Más popular</span>}
-            <h3>{pkg.name}</h3>
-            <p class="pkg-desc">{pkg.desc}</p>
-            <div class="pkg-price">
-              <s class="pkg-before">{pkg.before} {pkg.currency}</s>
-              <div class="pkg-main">
-                <span class="pkg-amount grad-text">{pkg.price}</span>
-                <span class="pkg-currency">{pkg.currency}</span>
-              </div>
-            </div>
-            <ul class="pkg-features">
-              {pkg.features.map(f => (
-                <li>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <a href="https://wa.me/525610341236" target="_blank" rel="noopener"
-               class={`btn ${pkg.featured ? 'btn-primary' : 'btn-outline'}`}
-               style="width:100%;justify-content:center;">
-              Iniciar proyecto
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+<section class="section" id="precios">
+  <div class="container">
+    <div class="section-head"><p class="label">Precios</p><h2>Nuestros paquetes y <span class="grad-text">precios</span></h2><p>Soluciones diseñadas para cada etapa de tu negocio. Sin contratos forzosos, sin letra chica.</p></div>
+    <div class="pricing-grid">{packages.map(pkg=><div class={`pricing-card ${pkg.featured?'featured':''}`}>{pkg.featured&&<div class="featured-badge">Más popular</div>}<div><span class="pkg-num grad-text">Paquete {pkg.num}</span><h3>{pkg.name}</h3><p class="pkg-desc">{pkg.desc}</p></div><div class="pkg-price"><s class="pkg-before">{pkg.before} {pkg.currency}</s><div class="pkg-main"><span class="pkg-amount">{pkg.price}</span><span class="pkg-currency">{pkg.currency}</span><span class="pkg-tag">Oferta</span></div></div><ul class="pkg-features">{pkg.features.map(f=><li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{f}</li>)}</ul><a href="https://wa.me/525610341236" target="_blank" rel="noopener" class={`btn ${pkg.featured?'btn-primary':'btn-outline'}`} style="width:100%;justify-content:center;">Iniciar Proyecto</a></div>)}</div>
+    <div class="pricing-badges">{['Responsive','SEO','Seguridad SSL','Optimización Speed','Soporte Prioritario'].map(b=><span class="pbadge">✓ {b}</span>)}</div>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section class="section" style="background: var(--bg-dark);">
-    <div class="container faq-wrap">
-      <div class="section-head" style="margin-bottom:0;">
-        <p class="label">FAQ</p>
-        <h2>Preguntas <span class="grad-text">frecuentes</span></h2>
-      </div>
-      <div class="faq-list">
-        {faqs.map(faq => (
-          <details class="faq-item">
-            <summary class="faq-q">
-              {faq.q}
-              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </summary>
-            <p class="faq-a">{faq.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
+<section class="section bg-dark stats-section">
+  <div class="container">
+    <div class="section-head" style="text-align:center;max-width:600px;margin-left:auto;margin-right:auto;"><p class="label" style="justify-content:center;">Resultados</p><h2>Juntos impulsamos tu <span class="grad-text">crecimiento</span></h2><p>Resultados reales para negocios reales. Así se ven los números de nuestros clientes.</p></div>
+    <div class="stats-grid"><div class="stat-card"><span class="stat-n grad-text">+40%</span><span class="stat-l">Incremento promedio en ventas de nuestros clientes</span></div><div class="stat-card"><span class="stat-n grad-text">+85%</span><span class="stat-l">Mejora en tasa de retención de clientes</span></div><div class="stat-card"><span class="stat-n grad-text">+120%</span><span class="stat-l">Incremento promedio en tráfico orgánico</span></div><div class="stat-card"><span class="stat-n grad-text">+3,000</span><span class="stat-l">Total de leads generados para nuestros clientes</span></div></div>
+    <div style="text-align:center;margin-top:2.5rem;"><a href="/#contacto" class="btn btn-primary">Quiero resultados →</a></div>
+  </div>
+</section>
 
-  <!-- CONTACTO -->
-  <section class="section" id="contacto">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-left">
-          <p class="label">Contacto</p>
-          <h2>Haz despegar tu <span class="grad-text">presencia digital</span></h2>
-          <p>Cuéntanos sobre tu negocio y te preparamos un plan de acción personalizado sin costo ni compromiso.</p>
-          <div class="contact-links">
-            <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="contact-link">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-              +52 56 1034 1236
-            </a>
-            <a href="mailto:contacto@marketingsolutionsmx.com" class="contact-link">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-              contacto@marketingsolutionsmx.com
-            </a>
-          </div>
-        </div>
+<section class="section bg-dark">
+  <div class="container faq-wrap">
+    <div class="section-head" style="margin-bottom:0;"><p class="label">FAQ</p><h2>Preguntas <span class="grad-text">frecuentes</span></h2><p>Todo lo que necesitas saber sobre cómo trabajamos y lo que podemos hacer por tu negocio.</p></div>
+    <div class="faq-list">{faqs.map((faq,i)=><details class="faq-item" open={i===0}><summary class="faq-q">{faq.q}<svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p class="faq-a">{faq.a}</p></details>)}</div>
+  </div>
+</section>
 
-        <form class="contact-form card-border" name="contacto" netlify>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nombre">Nombre</label>
-              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
-            </div>
-            <div class="form-group">
-              <label for="empresa">Empresa</label>
-              <input type="text" id="empresa" name="empresa" placeholder="Tu empresa" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" placeholder="tu@email.com" required />
-          </div>
-          <div class="form-group">
-            <label for="servicio">¿Qué servicio te interesa?</label>
-            <select id="servicio" name="servicio">
-              <option value="">Selecciona un servicio...</option>
-              <option>Diseño Web</option>
-              <option>SEO Premium</option>
-              <option>Google Ads</option>
-              <option>Campañas META</option>
-              <option>Redes Sociales</option>
-              <option>Email Marketing</option>
-              <option>Identidad de Marca</option>
-              <option>Estrategia completa</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu negocio..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
-            Enviar mensaje
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <p class="form-note">También por <a href="https://wa.me/525610341236" target="_blank" rel="noopener">WhatsApp</a> — respondemos en menos de 24 h.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
+<section class="section" id="contacto">
+  <div class="container"><div class="contact-grid"><div class="contact-left"><p class="label">Contacto</p><h2>Haz Despegar tu presencia <span class="grad-text">Digital</span></h2><p>Cuéntanos sobre tu negocio y te preparamos un plan de acción personalizado sin costo ni compromiso.</p><div class="contact-links"><a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="contact-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>+52 56 1034 1236</a><a href="mailto:contacto@marketingsolutionsmx.com" class="contact-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>contacto@marketingsolutionsmx.com</a></div></div>
+  <form class="contact-form" name="contacto" netlify><div class="form-row"><div class="form-group"><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required/></div><div class="form-group"><label for="empresa">Empresa</label><input type="text" id="empresa" name="empresa" placeholder="Tu empresa"/></div></div><div class="form-group"><label for="email">Correo electrónico</label><input type="email" id="email" name="email" placeholder="tu@email.com" required/></div><div class="form-group"><label for="servicio">¿Qué servicio te interesa?</label><select id="servicio" name="servicio"><option value="">Selecciona un servicio...</option><option>Gestión de Redes Sociales</option><option>Diseño Web</option><option>SEO Premium</option><option>Google Ads</option><option>Campañas META</option><option>Email Marketing</option><option>Identidad de Marca</option><option>Estrategia completa</option></select></div><div class="form-group"><label for="mensaje">Mensaje</label><textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu negocio..."></textarea></div><button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Enviar <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><p class="form-note">También por <a href="https://wa.me/525610341236" target="_blank" rel="noopener">WhatsApp</a> — respondemos en menos de 24h.</p></form></div></div>
+</section>
 </Layout>
 
 <style>
-/* HERO */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 72px;
-  overflow: hidden;
-  background: var(--bg-deep);
-}
-.hero-glow {
-  position: absolute;
-  top: -20%; left: 50%;
-  transform: translateX(-50%);
-  width: 900px; height: 600px;
-  background: radial-gradient(ellipse, rgba(79,110,247,0.18) 0%, rgba(139,92,246,0.1) 40%, transparent 70%);
-  pointer-events: none;
-}
-.hero-dots {
-  position: absolute;
-  inset: 0;
-  opacity: 0.5;
-  pointer-events: none;
-}
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-}
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(79,110,247,0.1);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  padding: 8px 18px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--gray-300);
-}
-.badge-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--blue);
-  box-shadow: 0 0 8px var(--blue);
-}
-.hero-inner h1 {
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  max-width: 14ch;
-}
-.hero-inner > p {
-  font-size: 1.1rem;
-  color: var(--gray-400);
-  max-width: 50ch;
-  line-height: 1.7;
-}
-.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-.hero-stats {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-  margin-top: 1rem;
-}
-.stat { display: flex; flex-direction: column; gap: 4px; }
-.stat-n { font-size: 1.75rem; font-weight: 800; line-height: 1; }
-.stat-l { font-size: 0.78rem; color: var(--gray-400); }
-.stat-sep { width: 1px; height: 40px; background: var(--border); }
-
-/* TICKER */
-.ticker {
-  width: 100%;
-  overflow: hidden;
-  border-top: 1px solid var(--border);
-  padding: 1.25rem 0;
-  margin-top: auto;
-  position: relative;
-  z-index: 1;
-}
-.ticker-track {
-  display: flex;
-  white-space: nowrap;
-  animation: ticker 22s linear infinite;
-}
-.ticker-track span {
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--gray-500);
-  padding: 0 2.5rem;
-}
-.ticker-track em { color: var(--blue); font-style: normal; }
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* SECTION HEADER */
-.section-head {
-  max-width: 600px;
-  margin-bottom: 3.5rem;
-}
-.section-head h2 {
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  margin-bottom: 1rem;
-  line-height: 1.15;
-}
-.section-head p { color: var(--gray-400); font-size: 1rem; line-height: 1.7; }
-
-/* SERVICIOS */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-.service-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 1.75rem;
-  position: relative;
-  overflow: hidden;
-}
-.service-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
-.s-icon { font-size: 1.75rem; line-height: 1; }
-.service-card h3 { font-size: 1rem; font-weight: 700; }
-.service-card p { font-size: 0.85rem; color: var(--gray-400); line-height: 1.6; flex: 1; }
-.s-tag {
-  font-size: 0.72rem; font-weight: 500;
-  color: var(--gray-500);
-  background: rgba(79,110,247,0.08);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-full);
-  padding: 4px 10px;
-  align-self: flex-start;
-}
-.s-arrow {
-  position: absolute;
-  top: 1.25rem; right: 1.25rem;
-  font-size: 1rem;
-  color: var(--blue);
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: var(--transition);
-}
-.service-card:hover .s-arrow { opacity: 1; transform: translateX(0); }
-
-/* PROCESO */
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.process-card {
-  padding: 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.p-num { font-size: 2.5rem; font-weight: 800; line-height: 1; }
-.process-card h3 { font-size: 1rem; font-weight: 700; }
-.process-card p { font-size: 0.875rem; color: var(--gray-400); line-height: 1.6; }
-
-/* PRECIOS */
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start; }
-.pricing-card { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.75rem; position: relative; }
-.pricing-featured { border-color: rgba(79,110,247,0.5); box-shadow: 0 0 40px rgba(79,110,247,0.12); }
-.pricing-badge {
-  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-  background: var(--grad);
-  color: var(--white);
-  font-size: 0.72rem; font-weight: 700;
-  padding: 4px 16px;
-  border-radius: var(--radius-full);
-  white-space: nowrap;
-}
-.pricing-card h3 { font-size: 1.15rem; font-weight: 700; }
-.pkg-desc { font-size: 0.875rem; color: var(--gray-400); }
-.pkg-price { display: flex; flex-direction: column; gap: 4px; }
-.pkg-before { font-size: 0.85rem; color: var(--gray-500); }
-.pkg-main { display: flex; align-items: baseline; gap: 6px; }
-.pkg-amount { font-size: 2.5rem; font-weight: 800; line-height: 1; }
-.pkg-currency { font-size: 0.9rem; color: var(--gray-400); }
-.pkg-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.pkg-features li { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: var(--gray-300); }
-.pkg-features svg { color: var(--blue); flex-shrink: 0; }
-
-/* FAQ */
-.faq-wrap { display: grid; grid-template-columns: 1fr 1.5fr; gap: 6rem; align-items: start; }
-.faq-list { border-top: 1px solid var(--border); }
-.faq-item { border-bottom: 1px solid var(--border); }
-.faq-q {
-  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-  padding: 1.5rem 0;
-  font-size: 0.95rem; font-weight: 600;
-  cursor: pointer; list-style: none;
-  color: var(--white);
-}
-.faq-q::-webkit-details-marker { display: none; }
-.faq-chevron { flex-shrink: 0; color: var(--gray-400); transition: transform 0.3s; }
-details[open] .faq-chevron { transform: rotate(180deg); }
-.faq-a { padding-bottom: 1.5rem; font-size: 0.875rem; color: var(--gray-400); line-height: 1.7; }
-
-/* CONTACTO */
-.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
-.contact-left h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 1rem; }
-.contact-left > p { color: var(--gray-400); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem; }
-.contact-links { display: flex; flex-direction: column; gap: 1rem; }
-.contact-link {
-  display: flex; align-items: center; gap: 12px;
-  font-size: 0.9rem; color: var(--gray-400);
-  transition: color 0.2s;
-}
-.contact-link:hover { color: var(--blue); }
-.contact-link svg { color: var(--blue); flex-shrink: 0; }
-.contact-form { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-group label { font-size: 0.78rem; font-weight: 600; color: var(--gray-400); letter-spacing: 0.03em; }
-.form-group input,
-.form-group select,
-.form-group textarea {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 12px 16px;
-  font-family: var(--font);
-  font-size: 0.875rem;
-  color: var(--white);
-  transition: border-color 0.2s;
-  outline: none;
-  resize: vertical;
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder { color: var(--gray-600); }
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus { border-color: var(--blue); }
-.form-group select option { background: var(--bg-card); }
-.form-note { font-size: 0.78rem; color: var(--gray-500); text-align: center; }
-.form-note a { color: var(--blue); }
-
-/* Responsive */
-@media (max-width: 1100px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
-}
-@media (max-width: 900px) {
-  .process-grid { grid-template-columns: repeat(2, 1fr); }
-  .faq-wrap { grid-template-columns: 1fr; gap: 2rem; }
-  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-}
-@media (max-width: 600px) {
-  .hero-stats { flex-direction: column; align-items: flex-start; gap: 1rem; }
-  .stat-sep { display: none; }
-  .services-grid { grid-template-columns: 1fr; }
-  .process-grid { grid-template-columns: 1fr; }
-  .form-row { grid-template-columns: 1fr; }
-}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:72px;overflow:hidden;background:var(--bg-deep)}
+.hero-glow{position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:1000px;height:700px;background:radial-gradient(ellipse at center,rgba(79,110,247,.2) 0%,rgba(139,92,246,.12) 40%,transparent 70%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(79,110,247,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(79,110,247,.06) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%)}
+.hero-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:1.75rem;padding-top:5rem;padding-bottom:4rem}
+.hero-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(79,110,247,.1);border:1px solid rgba(79,110,247,.25);border-radius:var(--radius-full);padding:8px 18px;font-size:.82rem;font-weight:600;color:var(--gray-300)}
+.pill-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-inner h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:1.08;letter-spacing:-.03em}
+.hero-inner>p{font-size:1.1rem;color:var(--gray-400);max-width:52ch;line-height:1.75}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.ticker{width:100%;overflow:hidden;border-top:1px solid var(--border);padding:1.25rem 0;margin-top:auto;position:relative;z-index:1}
+.ticker-track{display:flex;white-space:nowrap;animation:ticker 24s linear infinite}
+.ticker-track span{font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);padding:0 1.5rem}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.section{padding:var(--section-gap) 0}
+.bg-dark{background:var(--bg-dark)}
+.section-head{max-width:620px;margin-bottom:3.5rem}
+.section-head h2{font-size:clamp(1.85rem,4vw,2.75rem);margin-bottom:1rem;line-height:1.2}
+.section-head p{color:var(--gray-400);font-size:1rem;line-height:1.7}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden}
+.process-card{background:var(--bg-card);padding:2.25rem 2rem;display:flex;flex-direction:column;gap:.75rem;transition:background .2s}
+.process-card:hover{background:rgba(79,110,247,.06)}
+.p-num{font-size:2.25rem;font-weight:800;line-height:1}
+.process-card h3{font-size:.95rem;font-weight:700;line-height:1.4}
+.process-card p{font-size:.85rem;color:var(--gray-400);line-height:1.6}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden}
+.service-card{background:var(--bg-card);padding:2rem 1.75rem;display:flex;flex-direction:column;gap:.75rem;transition:background .2s;text-decoration:none}
+.service-card:hover{background:rgba(79,110,247,.07)}
+.s-top{display:flex;justify-content:space-between;align-items:center}
+.s-icon{font-size:1.75rem}
+.s-arrow{font-size:1.1rem;opacity:0;transition:opacity .2s,transform .2s;transform:translateX(-6px)}
+.service-card:hover .s-arrow{opacity:1;transform:translateX(0)}
+.service-card h3{font-size:1rem;font-weight:700;color:var(--white)}
+.service-card p{font-size:.85rem;color:var(--gray-400);line-height:1.6;flex:1}
+.s-cta{font-size:.8rem;font-weight:600;color:var(--blue);margin-top:.25rem}
+.cta-mid{padding:4rem 0;background:linear-gradient(135deg,rgba(79,110,247,.12) 0%,rgba(139,92,246,.08) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cta-mid-inner{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+.cta-mid-inner h2{font-size:clamp(1.5rem,3vw,2.25rem);margin-bottom:.75rem}
+.cta-mid-inner p{color:var(--gray-400);font-size:.95rem;line-height:1.7;max-width:55ch}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
+.pricing-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:2.25rem;display:flex;flex-direction:column;gap:1.75rem;position:relative;transition:border-color .2s,transform .2s}
+.pricing-card:hover{border-color:var(--border-hover);transform:translateY(-4px)}
+.pricing-card.featured{border-color:rgba(79,110,247,.5);box-shadow:0 0 48px rgba(79,110,247,.1)}
+.featured-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--grad);color:var(--white);font-size:.72rem;font-weight:700;padding:4px 18px;border-radius:var(--radius-full);white-space:nowrap}
+.pkg-num{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px}
+.pricing-card h3{font-size:1.2rem;font-weight:800}
+.pkg-desc{font-size:.875rem;color:var(--gray-400)}
+.pkg-price{display:flex;flex-direction:column;gap:4px}
+.pkg-before{font-size:.85rem;color:var(--gray-600)}
+.pkg-main{display:flex;align-items:baseline;gap:8px}
+.pkg-amount{font-size:2.5rem;font-weight:800;background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.pkg-currency{font-size:.9rem;color:var(--gray-400)}
+.pkg-tag{font-size:.7rem;font-weight:700;background:rgba(79,110,247,.15);color:var(--blue);border-radius:var(--radius-full);padding:2px 10px;border:1px solid var(--border)}
+.pkg-features{list-style:none;display:flex;flex-direction:column;gap:10px}
+.pkg-features li{display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--gray-300)}
+.pkg-features svg{color:var(--blue);flex-shrink:0}
+.pricing-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:2.5rem}
+.pbadge{font-size:.8rem;font-weight:500;color:var(--gray-400);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--radius-full);padding:6px 16px}
+.stats-section{}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;margin-top:3rem}
+.stat-card{background:var(--bg-card);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:.75rem;text-align:center;align-items:center}
+.stat-n{font-size:2.75rem;font-weight:800;line-height:1}
+.stat-l{font-size:.85rem;color:var(--gray-400);line-height:1.5;max-width:18ch;text-align:center}
+.faq-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:6rem;align-items:start}
+.faq-list{border-top:1px solid var(--border)}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 0;font-size:.95rem;font-weight:600;cursor:pointer;list-style:none;color:var(--white)}
+.faq-q::-webkit-details-marker{display:none}
+.faq-chevron{flex-shrink:0;color:var(--gray-400);transition:transform .3s}
+details[open] .faq-chevron{transform:rotate(180deg)}
+.faq-a{padding-bottom:1.5rem;font-size:.875rem;color:var(--gray-400);line-height:1.7}
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
+.contact-left h2{font-size:clamp(1.75rem,3vw,2.5rem);margin-bottom:1rem}
+.contact-left>p{color:var(--gray-400);font-size:.95rem;line-height:1.7;margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:1rem}
+.contact-link{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--gray-400);transition:color .2s}
+.contact-link:hover{color:var(--blue)}
+.contact-link svg{color:var(--blue);flex-shrink:0}
+.contact-form{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:2.5rem;display:flex;flex-direction:column;gap:1.25rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:.78rem;font-weight:600;color:var(--gray-400);letter-spacing:.03em}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;font-family:var(--font);font-size:.875rem;color:var(--white);transition:border-color .2s;outline:none;resize:vertical}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--gray-600)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,110,247,.1)}
+.form-group select option{background:var(--bg-card)}
+.form-note{font-size:.78rem;color:var(--gray-500);text-align:center}
+.form-note a{color:var(--blue)}
+@media(max-width:1100px){.services-grid{grid-template-columns:repeat(2,1fr)}.stats-grid{grid-template-columns:repeat(2,1fr)}.pricing-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
+@media(max-width:900px){.process-grid{grid-template-columns:repeat(2,1fr)}.cta-mid-inner{grid-template-columns:1fr}.faq-wrap{grid-template-columns:1fr;gap:2rem}.contact-grid{grid-template-columns:1fr;gap:3rem}}
+@media(max-width:600px){.services-grid{grid-template-columns:1fr}.process-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}}
 </style>
