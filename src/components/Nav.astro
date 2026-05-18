@@ -1,0 +1,203 @@
+---
+const nav = [
+  { label: 'Inicio', href: '/' },
+  {
+    label: 'Servicios', href: '#',
+    sub: [
+      { label: 'Diseño Web CDMX', href: '/servicios/diseno-web' },
+      { label: 'Diseño Web Cancún', href: '/ciudades/cancun' },
+      { label: 'Diseño Web Tulum', href: '/ciudades/tulum' },
+      { label: 'Gestión de Redes Sociales', href: '/servicios/redes-sociales' },
+      { label: 'SEO Premium', href: '/servicios/seo' },
+      { label: 'Google Ads', href: '/servicios/google-ads' },
+      { label: 'Campañas META', href: '/servicios/meta-ads' },
+      { label: 'Email Marketing', href: '/servicios/email-marketing' },
+      { label: 'Identidad de Marca', href: '/servicios/identidad-marca' },
+    ]
+  },
+  { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contáctanos', href: '/#contacto' },
+];
+---
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">
+      Marketing<span>Solutions</span><em>MX</em>
+    </a>
+
+    <nav aria-label="Navegación principal">
+      {nav.map(item => (
+        <div class={`nav-item ${item.sub ? 'has-sub' : ''}`}>
+          <a href={item.href} class="nav-link">
+            {item.label}
+            {item.sub && <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>}
+          </a>
+          {item.sub && (
+            <div class="dropdown">
+              {item.sub.map(s => <a href={s.href} class="dropdown-link">{s.label}</a>)}
+            </div>
+          )}
+        </div>
+      ))}
+    </nav>
+
+    <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary nav-cta">
+      Consulta gratis
+    </a>
+
+    <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-inner">
+    {nav.map(item => (
+      <div>
+        <a href={item.href} class="mobile-link">{item.label}</a>
+        {item.sub && (
+          <div class="mobile-sub">
+            {item.sub.map(s => <a href={s.href} class="mobile-sub-link">{s.label}</a>)}
+          </div>
+        )}
+      </div>
+    ))}
+    <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary" style="justify-content:center;margin-top:1rem;">
+      Consulta gratis por WhatsApp
+    </a>
+  </div>
+</div>
+
+<style>
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0;
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+}
+.nav.scrolled {
+  background: rgba(2, 6, 23, 0.88);
+  backdrop-filter: blur(20px);
+  border-color: var(--border);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  gap: 1.5rem;
+}
+.logo {
+  font-family: var(--font);
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.logo span { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.logo em { font-style: normal; color: var(--gray-400); font-size: 0.8em; }
+
+nav { display: flex; align-items: center; gap: 0.25rem; flex: 1; justify-content: center; }
+
+.nav-item { position: relative; }
+.nav-link {
+  display: flex; align-items: center; gap: 4px;
+  padding: 8px 14px;
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--gray-300);
+  border-radius: var(--radius-sm);
+  transition: color 0.2s, background 0.2s;
+}
+.nav-link:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  min-width: 220px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: var(--transition);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+}
+.has-sub:hover .dropdown {
+  opacity: 1; pointer-events: all; transform: translateY(0);
+}
+.dropdown-link {
+  display: block;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: var(--gray-400);
+  border-radius: var(--radius-sm);
+  transition: color 0.2s, background 0.2s;
+}
+.dropdown-link:hover { color: var(--white); background: rgba(79,110,247,0.1); }
+
+.nav-cta { margin-left: auto; padding: 10px 20px; font-size: 0.82rem; }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; padding: 8px;
+  margin-left: auto;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--white); border-radius: 2px;
+  transition: var(--transition);
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 72px 0 0 0;
+  background: var(--bg-deep);
+  z-index: 99;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+.mobile-nav.open { transform: translateX(0); }
+.mobile-inner { padding: 2rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.mobile-link {
+  display: block;
+  font-size: 1.2rem; font-weight: 700;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--white);
+}
+.mobile-sub { padding: 8px 0 8px 1rem; display: flex; flex-direction: column; gap: 4px; }
+.mobile-sub-link { font-size: 0.9rem; color: var(--gray-400); padding: 6px 0; }
+
+@media (max-width: 900px) {
+  nav, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .mobile-nav { display: block; }
+}
+</style>
+
+<script>
+const nav = document.getElementById('nav');
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+
+window.addEventListener('scroll', () => {
+  nav?.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+hamburger?.addEventListener('click', () => {
+  const open = mobileNav?.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', String(open));
+  mobileNav?.setAttribute('aria-hidden', String(!open));
+});
+</script>

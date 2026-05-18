@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Analítica y Reportes para Negocios" description="Medición en tiempo real de tus campañas para tomar decisiones basadas en datos concretos. Marketing Solutions MX es tu agencia de confianza en México." canonical="/servicios/analitica">
+  <section class="page-hero">
+    <div class="container">
+      <p class="label">Servicio</p>
+      <h1>Analítica y Reportes para Negocios</h1>
+      <p>Medición en tiempo real de tus campañas para tomar decisiones basadas en datos concretos.</p>
+      <div class="hero-ctas">
+        <a href="/#contacto" class="btn btn-primary">Solicitar consulta gratis</a>
+        <a href="/#precios" class="btn btn-outline">Ver precios</a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <p class="label">¿Qué incluye?</p>
+      <h2>Todo lo que necesitas para <span class="grad-text">resultados reales</span></h2>
+      <div class="benefits-grid">
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Configuración GA4</h3><p>Instalación y configuración correcta de Google Analytics 4.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Eventos y conversiones</h3><p>Tracking de acciones clave: formularios, llamadas, compras.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Dashboard personalizado</h3><p>Panel de control con tus KPIs más importantes.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Reportes mensuales</h3><p>Análisis de rendimiento con recomendaciones de mejora.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Análisis de embudo</h3><p>Identificación de cuellos de botella en tu proceso de conversión.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Data-driven decisions</h3><p>Estrategias ajustadas con base en comportamiento real.</p></div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-section">
+    <div class="container">
+      <h2>¿Listo para <span class="grad-text">empezar</span>?</h2>
+      <p>Cuéntanos sobre tu negocio y preparamos un plan personalizado sin costo.</p>
+      <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary">Hablar con un especialista</a>
+    </div>
+  </section>
+</Layout>
+<style>
+.page-hero { padding: 10rem 0 5rem; }
+.page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); max-width: 18ch; margin-bottom: 1.25rem; }
+.page-hero > .container > p { font-size: 1.1rem; color: var(--gray-400); max-width: 55ch; margin-bottom: 2rem; line-height: 1.7; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+.benefit-card { display: flex; gap: 1rem; padding: 1.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.benefit-card svg { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
+.benefit-card h3 { font-size: 0.95rem; margin-bottom: 6px; }
+.benefit-card p { font-size: 0.85rem; color: var(--gray-400); line-height: 1.6; }
+.cta-section { text-align: center; padding: var(--section-gap) 0; background: var(--bg-dark); }
+.cta-section h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 1rem; }
+.cta-section p { color: var(--gray-400); margin-bottom: 2rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
+@media (max-width: 700px) { .benefits-grid { grid-template-columns: 1fr; } }
+</style>

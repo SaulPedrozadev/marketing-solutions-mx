@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Nosotros" description="Conoce a Marketing Solutions MX. Agencia de marketing digital especializada en crear presencia digital real para marcas que quieren crecer en México." canonical="/nosotros">
+  <section class="page-hero">
+    <div class="container">
+      <p class="label">Nosotros</p>
+      <h1>No somos solo una agencia.<br /><span class="grad-text">Somos tu aliado digital.</span></h1>
+      <p>Somos un equipo de estrategas, diseñadores y especialistas en datos comprometidos con hacer crecer tu negocio en el entorno digital.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container about-grid">
+      <div>
+        <p class="label">Misión</p>
+        <h2>Crear presencia digital real para marcas que quieren <span class="grad-text">crecer</span></h2>
+        <p>No solo ejecutamos acciones — trabajamos en cómo se ve, cómo comunica y cómo se posiciona cada negocio frente a su audiencia.</p>
+        <p>Hemos trabajado con restaurantes, clínicas, inmobiliarias, despachos legales, e-commerce, turismo y más en toda la república.</p>
+        <a href="/#contacto" class="btn btn-primary" style="margin-top:2rem;">Hablar con el equipo</a>
+      </div>
+      <div class="values-grid">
+        {[
+          {t:'Estrategia real', d:'Sin plantillas genéricas. Cada plan diseñado para tu negocio y audiencia.'},
+          {t:'Datos, no suposiciones', d:'Cada decisión respaldada por métricas. Medimos y optimizamos constantemente.'},
+          {t:'Transparencia total', d:'Reportes claros, acceso directo al equipo. Sin letra chica ni sorpresas.'},
+          {t:'Aliados, no proveedores', d:'Nos involucramos como parte de tu equipo. Tu éxito es el nuestro.'},
+        ].map(v => (
+          <div class="value-card card-border">
+            <h3 class="grad-text">{v.t}</h3>
+            <p>{v.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+<style>
+.page-hero { padding: 10rem 0 5rem; }
+.page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); max-width: 18ch; margin-bottom: 1.25rem; }
+.page-hero > .container > p { font-size: 1.1rem; color: var(--gray-400); max-width: 55ch; line-height: 1.7; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.about-grid h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); margin-bottom: 1.25rem; }
+.about-grid p { color: var(--gray-400); line-height: 1.8; margin-bottom: 1rem; }
+.values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.value-card { padding: 1.75rem; }
+.value-card h3 { font-size: 1rem; margin-bottom: 8px; }
+.value-card p { font-size: 0.875rem; color: var(--gray-400); line-height: 1.6; }
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 3rem; } }
+@media (max-width: 600px) { .values-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Identidad de Marca para Negocios" description="Logotipo, paleta de color y manual de marca para construir una imagen memorable y coherente. Marketing Solutions MX es tu agencia de confianza en México." canonical="/servicios/identidad-marca">
+  <section class="page-hero">
+    <div class="container">
+      <p class="label">Servicio</p>
+      <h1>Identidad de Marca para Negocios</h1>
+      <p>Logotipo, paleta de color y manual de marca para construir una imagen memorable y coherente.</p>
+      <div class="hero-ctas">
+        <a href="/#contacto" class="btn btn-primary">Solicitar consulta gratis</a>
+        <a href="/#precios" class="btn btn-outline">Ver precios</a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <p class="label">¿Qué incluye?</p>
+      <h2>Todo lo que necesitas para <span class="grad-text">resultados reales</span></h2>
+      <div class="benefits-grid">
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Investigación de marca</h3><p>Análisis de competencia, audiencia y posicionamiento deseado.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Diseño de logotipo</h3><p>Propuestas originales con iteraciones hasta el resultado final.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Paleta de colores</h3><p>Sistema cromático coherente con la personalidad de tu marca.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Tipografía corporativa</h3><p>Selección de fuentes que comunican tu identidad.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Manual de marca</h3><p>Guía de uso para aplicar tu identidad en todos los medios.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Archivos fuente</h3><p>Entrega en formatos editables AI, PDF, PNG, SVG y WebP.</p></div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-section">
+    <div class="container">
+      <h2>¿Listo para <span class="grad-text">empezar</span>?</h2>
+      <p>Cuéntanos sobre tu negocio y preparamos un plan personalizado sin costo.</p>
+      <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary">Hablar con un especialista</a>
+    </div>
+  </section>
+</Layout>
+<style>
+.page-hero { padding: 10rem 0 5rem; }
+.page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); max-width: 18ch; margin-bottom: 1.25rem; }
+.page-hero > .container > p { font-size: 1.1rem; color: var(--gray-400); max-width: 55ch; margin-bottom: 2rem; line-height: 1.7; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+.benefit-card { display: flex; gap: 1rem; padding: 1.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.benefit-card svg { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
+.benefit-card h3 { font-size: 0.95rem; margin-bottom: 6px; }
+.benefit-card p { font-size: 0.85rem; color: var(--gray-400); line-height: 1.6; }
+.cta-section { text-align: center; padding: var(--section-gap) 0; background: var(--bg-dark); }
+.cta-section h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 1rem; }
+.cta-section p { color: var(--gray-400); margin-bottom: 2rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
+@media (max-width: 700px) { .benefits-grid { grid-template-columns: 1fr; } }
+</style>

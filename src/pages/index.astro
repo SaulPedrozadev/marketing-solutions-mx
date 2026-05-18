@@ -1,0 +1,554 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  { icon: '🌐', title: 'Diseño Web', desc: 'Sitios modernos y ultra rápidos que convierten visitantes en clientes.', href: '/servicios/diseno-web', tag: 'Landing · Business · E-Commerce' },
+  { icon: '🔍', title: 'SEO Premium', desc: 'Primeros lugares en Google para atraer tráfico calificado de forma sostenida.', href: '/servicios/seo', tag: 'On-page · Off-page · Local' },
+  { icon: '📣', title: 'Google Ads', desc: 'Captura clientes en el momento exacto que te buscan en Google.', href: '/servicios/google-ads', tag: 'Search · Display · Shopping' },
+  { icon: '📱', title: 'Campañas META', desc: 'Anuncios en Facebook e Instagram de alto rendimiento para maximizar tu ROI.', href: '/servicios/meta-ads', tag: 'Facebook · Instagram · Retargeting' },
+  { icon: '💬', title: 'Redes Sociales', desc: 'Gestión estratégica de contenido que conecta tu marca con su audiencia real.', href: '/servicios/redes-sociales', tag: 'Contenido · Comunidad · Estrategia' },
+  { icon: '✉️', title: 'Email Marketing', desc: 'Secuencias automatizadas que nutren tus leads y generan ventas en piloto.', href: '/servicios/email-marketing', tag: 'Flujos · Newsletters · Automatización' },
+  { icon: '🎨', title: 'Identidad de Marca', desc: 'Logotipo, paleta y manual de marca para construir una imagen memorable.', href: '/servicios/identidad-marca', tag: 'Logo · Branding · Manual' },
+  { icon: '📊', title: 'Analítica y Reportes', desc: 'Medición en tiempo real y decisiones basadas en datos concretos.', href: '/servicios/analitica', tag: 'GA4 · Dashboards · KPIs' },
+];
+
+const process = [
+  { n: '01', title: 'Diagnóstico', desc: 'Analizamos tu marca, mercado y competencia para encontrar oportunidades reales.' },
+  { n: '02', title: 'Estrategia', desc: 'Diseñamos un plan personalizado — sin plantillas — para tu negocio y audiencia.' },
+  { n: '03', title: 'KPIs claros', desc: 'Objetivos medibles desde el día uno para que veas cada avance.' },
+  { n: '04', title: 'Ejecución', desc: 'Implementamos, medimos y optimizamos para maximizar tu inversión.' },
+  { n: '05', title: 'Reportes', desc: 'Acceso directo al equipo, actualizaciones constantes. Sin sorpresas.' },
+  { n: '06', title: 'Evolución', desc: 'Ajustamos en tiempo real con base en datos y comportamiento de tu audiencia.' },
+];
+
+const packages = [
+  {
+    name: 'Landing Express',
+    desc: 'Para lanzamientos rápidos y campañas pagadas.',
+    price: '$4,000', before: '$5,500', currency: 'MXN',
+    features: ['Diseño UI/UX de alta conversión', 'Velocidad <1 segundo', 'Copywriting persuasivo', 'Integración WhatsApp', 'Formulario de captura', '1 mes soporte'],
+    featured: false,
+  },
+  {
+    name: 'Business Site',
+    desc: 'Autoridad digital y posicionamiento local.',
+    price: '$5,500', before: '$7,500', currency: 'MXN',
+    features: ['6 secciones profesionales', 'SEO Local avanzado', 'Google Analytics 4', 'Google Maps', 'Optimización móvil', '2 meses soporte'],
+    featured: true,
+  },
+  {
+    name: 'E-Commerce Max',
+    desc: 'Tu sistema completo de ventas online.',
+    price: '$15,500', before: '$17,000', currency: 'MXN',
+    features: ['Shopify o Webflow', 'Stripe / PayPal', 'Gestión de inventario', 'Emails automáticos', 'Recuperación de carritos', '3 meses soporte premium'],
+    featured: false,
+  },
+];
+
+const faqs = [
+  { q: '¿Trabajan con contratos forzosos?', a: 'No. Trabajamos con acuerdos mensuales sin permanencia mínima. Sin letra chica, sin sorpresas.' },
+  { q: '¿Cuánto tarda en verse resultados?', a: 'En campañas pagadas los primeros resultados son inmediatos. En SEO orgánico entre 3 y 6 meses. Siempre establecemos expectativas realistas.' },
+  { q: '¿Trabajan con negocios pequeños?', a: 'Sí. Trabajamos con emprendedores, PyMEs y empresas medianas. Ajustamos el plan a tu etapa y presupuesto.' },
+  { q: '¿Qué incluye la consulta gratis?', a: '30 minutos analizando tu presencia digital actual e identificando oportunidades — sin compromiso de contratación.' },
+  { q: '¿Tienen experiencia en mi industria?', a: 'Hemos trabajado con restaurantes, clínicas, inmobiliarias, despachos legales, e-commerce, coaches y más. Nos adaptamos a tu sector.' },
+];
+---
+
+<Layout title="Agencia de Marketing Digital en CDMX" canonical="/">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-dots dots-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-badge animate">
+        <span class="badge-dot"></span>
+        Agencia de Marketing · México 🇲🇽
+      </div>
+      <h1 class="animate delay-1">
+        Presencia digital <span class="grad-text">real</span><br />para tu negocio
+      </h1>
+      <p class="animate delay-2">
+        Ayudamos a emprendedores y empresas a fortalecer su presencia digital, conectar con su audiencia y generar oportunidades reales de crecimiento.
+      </p>
+      <div class="hero-ctas animate delay-3">
+        <a href="#contacto" class="btn btn-primary">
+          Solicitar consulta gratis
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+      </div>
+
+      <div class="hero-stats animate delay-3">
+        <div class="stat">
+          <span class="stat-n grad-text">+40%</span>
+          <span class="stat-l">Incremento promedio en ventas</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-n grad-text">+150</span>
+          <span class="stat-l">Proyectos entregados</span>
+        </div>
+        <div class="stat-sep"></div>
+        <div class="stat">
+          <span class="stat-n grad-text">5+</span>
+          <span class="stat-l">Ciudades en México</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        {['Diseño Web', 'SEO', 'Google Ads', 'META Ads', 'Redes Sociales', 'Email Marketing', 'Branding', 'Analítica'].map(t => (
+          <span>{t} <em>·</em></span>
+        ))}
+        {['Diseño Web', 'SEO', 'Google Ads', 'META Ads', 'Redes Sociales', 'Email Marketing', 'Branding', 'Analítica'].map(t => (
+          <span>{t} <em>·</em></span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section" id="servicios">
+    <div class="container">
+      <div class="section-head">
+        <p class="label">Servicios</p>
+        <h2>Todo lo que tu negocio<br />necesita para <span class="grad-text">crecer</span></h2>
+        <p>Estrategias diseñadas para posicionar tu marca, atraer clientes y maximizar tu retorno de inversión.</p>
+      </div>
+      <div class="services-grid">
+        {services.map(s => (
+          <a href={s.href} class="service-card card-border">
+            <span class="s-icon">{s.icon}</span>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+            <span class="s-tag">{s.tag}</span>
+            <span class="s-arrow">→</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="section" style="background: var(--bg-dark);">
+    <div class="container">
+      <div class="section-head">
+        <p class="label">Metodología</p>
+        <h2>Nuestra forma de <span class="grad-text">trabajar</span></h2>
+        <p>Definimos cada estrategia después de analizar a fondo tu modelo de negocio, mercado y oportunidades reales.</p>
+      </div>
+      <div class="process-grid">
+        {process.map(step => (
+          <div class="process-card">
+            <span class="p-num grad-text">{step.n}</span>
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRECIOS -->
+  <section class="section" id="precios">
+    <div class="container">
+      <div class="section-head">
+        <p class="label">Precios</p>
+        <h2>Paquetes <span class="grad-text">sin contratos</span> forzosos</h2>
+        <p>Diseñados para cada etapa de tu negocio. Sin letra chica, sin sorpresas.</p>
+      </div>
+      <div class="pricing-grid">
+        {packages.map(pkg => (
+          <div class={`pricing-card card-border ${pkg.featured ? 'pricing-featured' : ''}`}>
+            {pkg.featured && <span class="pricing-badge">Más popular</span>}
+            <h3>{pkg.name}</h3>
+            <p class="pkg-desc">{pkg.desc}</p>
+            <div class="pkg-price">
+              <s class="pkg-before">{pkg.before} {pkg.currency}</s>
+              <div class="pkg-main">
+                <span class="pkg-amount grad-text">{pkg.price}</span>
+                <span class="pkg-currency">{pkg.currency}</span>
+              </div>
+            </div>
+            <ul class="pkg-features">
+              {pkg.features.map(f => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a href="https://wa.me/525610341236" target="_blank" rel="noopener"
+               class={`btn ${pkg.featured ? 'btn-primary' : 'btn-outline'}`}
+               style="width:100%;justify-content:center;">
+              Iniciar proyecto
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background: var(--bg-dark);">
+    <div class="container faq-wrap">
+      <div class="section-head" style="margin-bottom:0;">
+        <p class="label">FAQ</p>
+        <h2>Preguntas <span class="grad-text">frecuentes</span></h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map(faq => (
+          <details class="faq-item">
+            <summary class="faq-q">
+              {faq.q}
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <p class="faq-a">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="section" id="contacto">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <p class="label">Contacto</p>
+          <h2>Haz despegar tu <span class="grad-text">presencia digital</span></h2>
+          <p>Cuéntanos sobre tu negocio y te preparamos un plan de acción personalizado sin costo ni compromiso.</p>
+          <div class="contact-links">
+            <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              +52 56 1034 1236
+            </a>
+            <a href="mailto:contacto@marketingsolutionsmx.com" class="contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              contacto@marketingsolutionsmx.com
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form card-border" name="contacto" netlify>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Tu empresa" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="servicio">¿Qué servicio te interesa?</label>
+            <select id="servicio" name="servicio">
+              <option value="">Selecciona un servicio...</option>
+              <option>Diseño Web</option>
+              <option>SEO Premium</option>
+              <option>Google Ads</option>
+              <option>Campañas META</option>
+              <option>Redes Sociales</option>
+              <option>Email Marketing</option>
+              <option>Identidad de Marca</option>
+              <option>Estrategia completa</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu negocio..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+            Enviar mensaje
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-note">También por <a href="https://wa.me/525610341236" target="_blank" rel="noopener">WhatsApp</a> — respondemos en menos de 24 h.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 72px;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+.hero-glow {
+  position: absolute;
+  top: -20%; left: 50%;
+  transform: translateX(-50%);
+  width: 900px; height: 600px;
+  background: radial-gradient(ellipse, rgba(79,110,247,0.18) 0%, rgba(139,92,246,0.1) 40%, transparent 70%);
+  pointer-events: none;
+}
+.hero-dots {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(79,110,247,0.1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gray-300);
+}
+.badge-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 8px var(--blue);
+}
+.hero-inner h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  max-width: 14ch;
+}
+.hero-inner > p {
+  font-size: 1.1rem;
+  color: var(--gray-400);
+  max-width: 50ch;
+  line-height: 1.7;
+}
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat-n { font-size: 1.75rem; font-weight: 800; line-height: 1; }
+.stat-l { font-size: 0.78rem; color: var(--gray-400); }
+.stat-sep { width: 1px; height: 40px; background: var(--border); }
+
+/* TICKER */
+.ticker {
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  padding: 1.25rem 0;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+}
+.ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 22s linear infinite;
+}
+.ticker-track span {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  padding: 0 2.5rem;
+}
+.ticker-track em { color: var(--blue); font-style: normal; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* SECTION HEADER */
+.section-head {
+  max-width: 600px;
+  margin-bottom: 3.5rem;
+}
+.section-head h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+.section-head p { color: var(--gray-400); font-size: 1rem; line-height: 1.7; }
+
+/* SERVICIOS */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+}
+.service-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+.s-icon { font-size: 1.75rem; line-height: 1; }
+.service-card h3 { font-size: 1rem; font-weight: 700; }
+.service-card p { font-size: 0.85rem; color: var(--gray-400); line-height: 1.6; flex: 1; }
+.s-tag {
+  font-size: 0.72rem; font-weight: 500;
+  color: var(--gray-500);
+  background: rgba(79,110,247,0.08);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  align-self: flex-start;
+}
+.s-arrow {
+  position: absolute;
+  top: 1.25rem; right: 1.25rem;
+  font-size: 1rem;
+  color: var(--blue);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: var(--transition);
+}
+.service-card:hover .s-arrow { opacity: 1; transform: translateX(0); }
+
+/* PROCESO */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.process-card {
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.p-num { font-size: 2.5rem; font-weight: 800; line-height: 1; }
+.process-card h3 { font-size: 1rem; font-weight: 700; }
+.process-card p { font-size: 0.875rem; color: var(--gray-400); line-height: 1.6; }
+
+/* PRECIOS */
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start; }
+.pricing-card { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.75rem; position: relative; }
+.pricing-featured { border-color: rgba(79,110,247,0.5); box-shadow: 0 0 40px rgba(79,110,247,0.12); }
+.pricing-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--grad);
+  color: var(--white);
+  font-size: 0.72rem; font-weight: 700;
+  padding: 4px 16px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+.pricing-card h3 { font-size: 1.15rem; font-weight: 700; }
+.pkg-desc { font-size: 0.875rem; color: var(--gray-400); }
+.pkg-price { display: flex; flex-direction: column; gap: 4px; }
+.pkg-before { font-size: 0.85rem; color: var(--gray-500); }
+.pkg-main { display: flex; align-items: baseline; gap: 6px; }
+.pkg-amount { font-size: 2.5rem; font-weight: 800; line-height: 1; }
+.pkg-currency { font-size: 0.9rem; color: var(--gray-400); }
+.pkg-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.pkg-features li { display: flex; align-items: center; gap: 10px; font-size: 0.875rem; color: var(--gray-300); }
+.pkg-features svg { color: var(--blue); flex-shrink: 0; }
+
+/* FAQ */
+.faq-wrap { display: grid; grid-template-columns: 1fr 1.5fr; gap: 6rem; align-items: start; }
+.faq-list { border-top: 1px solid var(--border); }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: 1.5rem 0;
+  font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; list-style: none;
+  color: var(--white);
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-chevron { flex-shrink: 0; color: var(--gray-400); transition: transform 0.3s; }
+details[open] .faq-chevron { transform: rotate(180deg); }
+.faq-a { padding-bottom: 1.5rem; font-size: 0.875rem; color: var(--gray-400); line-height: 1.7; }
+
+/* CONTACTO */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: start; }
+.contact-left h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 1rem; }
+.contact-left > p { color: var(--gray-400); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem; }
+.contact-links { display: flex; flex-direction: column; gap: 1rem; }
+.contact-link {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 0.9rem; color: var(--gray-400);
+  transition: color 0.2s;
+}
+.contact-link:hover { color: var(--blue); }
+.contact-link svg { color: var(--blue); flex-shrink: 0; }
+.contact-form { padding: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 0.78rem; font-weight: 600; color: var(--gray-400); letter-spacing: 0.03em; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-family: var(--font);
+  font-size: 0.875rem;
+  color: var(--white);
+  transition: border-color 0.2s;
+  outline: none;
+  resize: vertical;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--gray-600); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--blue); }
+.form-group select option { background: var(--bg-card); }
+.form-note { font-size: 0.78rem; color: var(--gray-500); text-align: center; }
+.form-note a { color: var(--blue); }
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 420px; }
+}
+@media (max-width: 900px) {
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .faq-wrap { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+}
+@media (max-width: 600px) {
+  .hero-stats { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .stat-sep { display: none; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>

@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Página no encontrada">
+  <section style="min-height:80vh;display:flex;align-items:center;padding-top:72px;">
+    <div class="container">
+      <p class="label">Error 404</p>
+      <h1 style="font-size:clamp(2.5rem,6vw,5rem);margin-bottom:1rem;">
+        Esta página <span class="grad-text">no existe</span>
+      </h1>
+      <p style="color:var(--gray-400);font-size:1.1rem;max-width:45ch;margin-bottom:2rem;line-height:1.7;">La URL que visitaste no existe o fue movida.</p>
+      <div style="display:flex;gap:12px;">
+        <a href="/" class="btn btn-primary">Volver al inicio</a>
+        <a href="/#contacto" class="btn btn-outline">Contactar</a>
+      </div>
+    </div>
+  </section>
+</Layout>

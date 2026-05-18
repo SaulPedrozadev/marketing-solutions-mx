@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Agencia de Marketing Digital en Cancún" description="Agencia de marketing digital en Cancún. Diseño web, SEO, Google Ads y redes sociales para negocios en Cancún, Quintana Roo que quieren crecer." canonical="/ciudades/cancun">
+  <section class="page-hero">
+    <div class="container">
+      <p class="label">Agencia local · Cancún, Quintana Roo</p>
+      <h1>Marketing digital en <span class="grad-text">Cancún</span></h1>
+      <p>Estrategias digitales diseñadas para turismo, hotelería y negocios de la Riviera Maya. Conocemos tu ciudad y las oportunidades reales de crecimiento para tu negocio.</p>
+      <div class="hero-ctas">
+        <a href="/#contacto" class="btn btn-primary">Solicitar consulta gratis</a>
+        <a href="/#servicios" class="btn btn-outline">Ver servicios</a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <p class="label">Servicios disponibles en Cancún</p>
+      <h2>Todo el marketing que <span class="grad-text">tu negocio necesita</span></h2>
+      <div class="services-list">
+        {['Diseño Web Profesional', 'SEO Local y Orgánico', 'Google Ads', 'Campañas META (Facebook e Instagram)', 'Gestión de Redes Sociales', 'Email Marketing', 'Identidad de Marca', 'Analítica y Reportes'].map(s => (
+          <div class="svc-row">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {s}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="cta-section">
+    <div class="container">
+      <h2>¿Tu negocio está en <span class="grad-text">Cancún</span>?</h2>
+      <p>Te preparamos una estrategia local personalizada sin costo ni compromiso.</p>
+      <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary">Contactar ahora</a>
+    </div>
+  </section>
+</Layout>
+<style>
+.page-hero { padding: 10rem 0 5rem; }
+.page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); max-width: 18ch; margin-bottom: 1.25rem; }
+.page-hero > .container > p { font-size: 1.1rem; color: var(--gray-400); max-width: 55ch; margin-bottom: 2rem; line-height: 1.7; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.services-list { display: flex; flex-direction: column; border-top: 1px solid var(--border); margin-top: 2rem; }
+.svc-row { display: flex; align-items: center; gap: 12px; padding: 1.25rem 0; border-bottom: 1px solid var(--border); font-size: 1rem; color: var(--gray-300); }
+.svc-row svg { color: var(--blue); flex-shrink: 0; }
+.cta-section { text-align: center; padding: var(--section-gap) 0; background: var(--bg-dark); }
+.cta-section h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 1rem; }
+.cta-section p { color: var(--gray-400); margin-bottom: 2rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
+</style>

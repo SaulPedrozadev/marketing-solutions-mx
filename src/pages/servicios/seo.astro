@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="SEO Premium para Negocios en México" description="Posicionamiento en Google para atraer tráfico calificado y clientes reales de forma sostenida. Marketing Solutions MX es tu agencia de confianza en México." canonical="/servicios/seo">
+  <section class="page-hero">
+    <div class="container">
+      <p class="label">Servicio</p>
+      <h1>SEO Premium para Negocios en México</h1>
+      <p>Posicionamiento en Google para atraer tráfico calificado y clientes reales de forma sostenida.</p>
+      <div class="hero-ctas">
+        <a href="/#contacto" class="btn btn-primary">Solicitar consulta gratis</a>
+        <a href="/#precios" class="btn btn-outline">Ver precios</a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <p class="label">¿Qué incluye?</p>
+      <h2>Todo lo que necesitas para <span class="grad-text">resultados reales</span></h2>
+      <div class="benefits-grid">
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Auditoría técnica completa</h3><p>Velocidad, estructura, errores de rastreo y factores técnicos.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Investigación de keywords</h3><p>Búsquedas con mayor intención de compra en tu sector y ubicación.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Optimización on-page</h3><p>Títulos, descripciones, encabezados, contenido e imágenes.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Link building de calidad</h3><p>Autoridad con enlaces relevantes de sitios con alta credibilidad.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>SEO local avanzado</h3><p>Google Maps, fichas GMB y búsquedas geolocalizadas.</p></div>
+          </div>
+          <div class="benefit-card">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Reportes mensuales</h3><p>Dashboard con posiciones, tráfico, clics y conversiones.</p></div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-section">
+    <div class="container">
+      <h2>¿Listo para <span class="grad-text">empezar</span>?</h2>
+      <p>Cuéntanos sobre tu negocio y preparamos un plan personalizado sin costo.</p>
+      <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary">Hablar con un especialista</a>
+    </div>
+  </section>
+</Layout>
+<style>
+.page-hero { padding: 10rem 0 5rem; }
+.page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); max-width: 18ch; margin-bottom: 1.25rem; }
+.page-hero > .container > p { font-size: 1.1rem; color: var(--gray-400); max-width: 55ch; margin-bottom: 2rem; line-height: 1.7; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+.benefit-card { display: flex; gap: 1rem; padding: 1.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.benefit-card svg { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
+.benefit-card h3 { font-size: 0.95rem; margin-bottom: 6px; }
+.benefit-card p { font-size: 0.85rem; color: var(--gray-400); line-height: 1.6; }
+.cta-section { text-align: center; padding: var(--section-gap) 0; background: var(--bg-dark); }
+.cta-section h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 1rem; }
+.cta-section p { color: var(--gray-400); margin-bottom: 2rem; max-width: 50ch; margin-left: auto; margin-right: auto; }
+@media (max-width: 700px) { .benefits-grid { grid-template-columns: 1fr; } }
+</style>
