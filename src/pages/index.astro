@@ -1,189 +1,503 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const process_steps = [
-  { n: '01', title: 'Analizamos tu marca, mercado y competencia', desc: 'Hacemos un diagnóstico completo para entender exactamente dónde está tu negocio y qué oportunidades reales existen en tu sector.' },
-  { n: '02', title: 'Creamos estrategias personalizadas', desc: 'Nada de plantillas genéricas. Cada plan está diseñado específicamente para tu negocio, tu audiencia y tus metas de crecimiento.' },
-  { n: '03', title: 'Definimos objetivos claros y medibles', desc: 'Establecemos KPIs concretos desde el día uno para que siempre tengas claridad sobre qué estamos logrando y hacia dónde vamos.' },
-  { n: '04', title: 'Medimos resultados y optimizamos constantemente', desc: 'Los datos guían cada decisión. Analizamos el rendimiento en tiempo real y ajustamos para maximizar el retorno de tu inversión.' },
-  { n: '05', title: 'Comunicación constante y transparente', desc: 'Reportes claros, acceso directo al equipo y actualizaciones periódicas. Sin letra chica, sin sorpresas — solo resultados.' },
-  { n: '06', title: 'Ajustamos con base en datos reales y tu audiencia', desc: 'Escuchamos el comportamiento de tus usuarios y evolucionamos la estrategia con ellos, manteniéndola siempre vigente y efectiva.' },
+
+const testimonials = [
+  { name: 'Restaurante El Parador', role: 'Dueño, CDMX', quote: 'En 3 meses duplicamos las reservaciones por Google. Antes no aparecíamos en el mapa, ahora somos los primeros.', metric1: '+210%', label1: 'Tráfico orgánico', metric2: '2x', label2: 'Reservaciones' },
+  { name: 'Clínica DermaSkin', role: 'Directora médica, CDMX', quote: 'Las campañas META generaron más leads en un mes que todo el año anterior. El equipo entiende nuestro sector.', metric1: '+340%', label1: 'Leads generados', metric2: '-42%', label2: 'Costo por lead' },
+  { name: 'Inmobiliaria Horizonte', role: 'Gerente comercial, Cancún', quote: 'Diseñaron nuestro sitio en 2 semanas y el posicionamiento en Google llegó en 60 días. Increíble rapidez.', metric1: '60 días', label1: 'Para rankear #1', metric2: '+180%', label2: 'Visitas al sitio' },
 ];
+
 const services = [
-  { icon: '📱', title: 'Gestión Social', desc: 'Contenido estratégico y dinámico para conectar con tu audiencia en redes sociales.', href: '/servicios/redes-sociales' },
-  { icon: '🎯', title: 'Campañas META', desc: 'Anuncios de alta conversión en Facebook e Instagram para maximizar tu inversión.', href: '/servicios/meta-ads' },
-  { icon: '🔍', title: 'SEO Premium', desc: 'Primeros resultados en Google para atraer tráfico calificado a tu sitio web.', href: '/servicios/seo' },
-  { icon: '🌐', title: 'Diseño Web', desc: 'Sitios modernos y optimizados para convertir visitantes en clientes reales.', href: '/servicios/diseno-web' },
-  { icon: '📣', title: 'Google Ads', desc: 'Campañas de búsqueda pagada para captar clientes en el momento exacto que te buscan.', href: '/servicios/google-ads' },
-  { icon: '✉️', title: 'Email Marketing', desc: 'Secuencias automatizadas que nutren tus leads y generan ventas en piloto automático.', href: '/servicios/email-marketing' },
-  { icon: '🎨', title: 'Identidad de Marca', desc: 'Diseño de logotipo, paleta y guía de estilo para construir una marca memorable.', href: '/servicios/identidad-marca' },
-  { icon: '📊', title: 'Analítica y Reportes', desc: 'Medición en tiempo real de tus campañas para tomar decisiones basadas en datos reales.', href: '/servicios/analitica' },
+  { icon: '📱', title: 'Gestión Social', desc: 'Contenido estratégico que conecta tu marca con su audiencia real.', href: '/servicios/redes-sociales', wide: false },
+  { icon: '🎯', title: 'Campañas META', desc: 'Anuncios de alta conversión en Facebook e Instagram.', href: '/servicios/meta-ads', wide: false },
+  { icon: '🔍', title: 'SEO Premium', desc: 'Primeros resultados en Google para atraer tráfico calificado de forma sostenida y sin pagar por clic.', href: '/servicios/seo', wide: true },
+  { icon: '🌐', title: 'Diseño Web', desc: 'Sitios modernos y optimizados para convertir visitantes.', href: '/servicios/diseno-web', wide: false },
+  { icon: '📣', title: 'Google Ads', desc: 'Captura clientes en el momento exacto que te buscan.', href: '/servicios/google-ads', wide: false },
+  { icon: '✉️', title: 'Email Marketing', desc: 'Secuencias automatizadas que generan ventas en piloto.', href: '/servicios/email-marketing', wide: false },
+  { icon: '🎨', title: 'Identidad de Marca', desc: 'Logotipo, paleta y manual para una marca memorable y coherente en todos los canales.', href: '/servicios/identidad-marca', wide: true },
 ];
+
+const process = [
+  { n: '01', title: 'Diagnóstico', desc: 'Analizamos tu marca, mercado y competencia para identificar oportunidades reales de crecimiento.' },
+  { n: '02', title: 'Estrategia', desc: 'Diseñamos un plan personalizado. Sin plantillas genéricas. Solo lo que funciona para tu negocio.' },
+  { n: '03', title: 'Ejecución y resultados', desc: 'Implementamos, medimos y optimizamos. Reportes claros, acceso directo al equipo. Sin sorpresas.' },
+];
+
 const packages = [
-  { num: '01', name: 'Landing Express', desc: 'Ideal para lanzamientos rápidos y campañas pagadas.', price: '$4,000', before: '$5,500', currency: 'MXN', features: ['Diseño UI/UX de alta conversión','Optimización ultra rápida (<1s)','Copywriting persuasivo','Integración con WhatsApp','Formulario de captura leads','1 mes de soporte técnico'], featured: false },
-  { num: '02', name: 'Business Site', desc: 'Autoridad digital para posicionarte localmente.', price: '$5,500', before: '$7,500', currency: 'MXN', features: ['6 Secciones profesionales','Estrategia SEO Local avanzada','Google Analytics 4 configurado','Integración Google Maps','Optimización para móviles','2 meses de soporte'], featured: true },
-  { num: '03', name: 'E-Commerce Max', desc: 'Tu sistema completo de ventas online.', price: '$15,500', before: '$17,000', currency: 'MXN', features: ['Tienda Shopify o Webflow','Pasarela Stripe / PayPal','Gestión de inventario','Automatización de correos','Recuperación de carritos','3 meses soporte premium'], featured: false },
+  { num: '01', name: 'Landing Express', desc: 'Para lanzamientos rápidos.', price: '$4,000', before: '$5,500', currency: 'MXN', features: ['Diseño UI/UX de alta conversión', 'Velocidad <1 segundo', 'Copywriting persuasivo', 'Integración WhatsApp', 'Formulario de captura', '1 mes soporte'], featured: false },
+  { num: '02', name: 'Business Site', desc: 'Autoridad y posicionamiento local.', price: '$5,500', before: '$7,500', currency: 'MXN', features: ['6 secciones profesionales', 'SEO Local avanzado', 'Google Analytics 4', 'Google Maps integrado', 'Optimización móvil', '2 meses soporte'], featured: true },
+  { num: '03', name: 'E-Commerce Max', desc: 'Tu sistema completo de ventas.', price: '$15,500', before: '$17,000', currency: 'MXN', features: ['Shopify o Webflow', 'Stripe / PayPal', 'Gestión de inventario', 'Emails automáticos', 'Recuperación carritos', '3 meses soporte premium'], featured: false },
 ];
+
 const faqs = [
-  { q: '¿Quiénes somos en Marketing Solutions?', a: 'Somos una agencia de marketing en México especializada en crear presencia digital real para marcas que buscan crecer, posicionarse y ser relevantes en el entorno digital.' },
-  { q: '¿Qué hacemos?', a: 'Creamos estrategias de marketing digital enfocadas en fortalecer la presencia de las marcas. No solo ejecutamos acciones, sino que trabajamos en cómo se ve, cómo comunica y cómo se posiciona cada negocio frente a su audiencia.' },
-  { q: '¿Cómo entendemos la presencia digital?', a: 'Para nosotros, la presencia digital es la combinación correcta de identidad, visibilidad y estrategia. Es lograr que una marca no solo esté presente, sino que sea reconocible, coherente y confiable en cada punto de contacto.' },
-  { q: '¿Por qué elegir a Marketing Solutions como tu aliado?', a: 'Porque no trabajamos con fórmulas genéricas. Acompañamos a cada cliente como un aliado estratégico, enfocados en construir una presencia digital sostenible y orientada a resultados reales.' },
-  { q: '¿Trabajan con contratos forzosos?', a: 'No. Trabajamos con acuerdos mensuales sin permanencia mínima. Sin letra chica ni sorpresas.' },
+  { q: '¿Trabajan con contratos forzosos?', a: 'No. Acuerdos mensuales sin permanencia mínima. Sin letra chica ni sorpresas.' },
+  { q: '¿Cuánto tarda en verse resultados?', a: 'En campañas pagadas los resultados son casi inmediatos. En SEO entre 3 y 6 meses. Siempre fijamos expectativas realistas desde el día uno.' },
+  { q: '¿Trabajan con negocios pequeños?', a: 'Sí. Trabajamos con emprendedores, PyMEs y empresas medianas en toda la república. Ajustamos el plan a tu etapa y presupuesto.' },
+  { q: '¿Qué incluye la consulta gratis?', a: '30 minutos analizando tu presencia digital actual y presentando un plan de acción concreto — sin compromiso.' },
+  { q: '¿Tienen experiencia en mi industria?', a: 'Restaurantes, clínicas, inmobiliarias, despachos legales, e-commerce, turismo y más. Nos adaptamos a tu sector.' },
 ];
 ---
-<Layout title="Agencia de Marketing en CDMX" description="En Marketing Solutions somos una agencia de marketing en CDMX que ayuda a emprendedores y empresas a fortalecer su presencia digital, conectar con su audiencia y generar oportunidades reales de crecimiento." canonical="/">
+
+<Layout
+  title="Agencia de Marketing en CDMX"
+  description="En Marketing Solutions somos una agencia de marketing en CDMX que ayuda a emprendedores y empresas a fortalecer su presencia digital, conectar con su audiencia y generar oportunidades reales de crecimiento."
+  canonical="/"
+>
+
+<!-- ══════════════════ HERO ══════════════════ -->
 <section class="hero">
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hb-glow1"></div>
+    <div class="hb-glow2"></div>
+    <div class="hb-grid"></div>
+  </div>
+
   <div class="container hero-inner">
-    <div class="hero-pill"><span class="pill-dot"></span>Agencia de Marketing · CDMX 🇲🇽</div>
-    <h1>Agencia de marketing en CDMX<br/>enfocada en crear presencia<br/><span class="grad-text">real para tu negocio</span></h1>
-    <p>En Marketing Solutions ayudamos a emprendedores y empresas a fortalecer su presencia digital, conectar con su audiencia y generar oportunidades reales de crecimiento.</p>
-    <div class="hero-ctas">
-      <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary">Comienza ahora <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+    <!-- Social proof pill -->
+    <div class="sp-pill">
+      <div class="sp-avatars">
+        <span class="sp-av" style="background:linear-gradient(135deg,#4F6EF7,#8B5CF6)">M</span>
+        <span class="sp-av" style="background:linear-gradient(135deg,#8B5CF6,#ec4899)">L</span>
+        <span class="sp-av" style="background:linear-gradient(135deg,#4F6EF7,#06b6d4)">R</span>
+      </div>
+      <span>+150 negocios en México confían en nosotros</span>
+    </div>
+
+    <h1>
+      Agencia de marketing<br />
+      en CDMX enfocada en<br />
+      crear presencia <em>real</em>
+    </h1>
+
+    <p class="hero-sub">
+      Ayudamos a emprendedores y empresas a fortalecer su presencia digital,
+      conectar con su audiencia y generar oportunidades reales de crecimiento.
+    </p>
+
+    <div class="hero-actions">
+      <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+        Solicitar consulta gratis
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.75 9h10.5M10.5 5.25 14.25 9l-3.75 3.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#servicios" class="btn btn-ghost-white">Ver servicios</a>
+    </div>
+
+    <!-- Stats row -->
+    <div class="hero-stats">
+      <div class="hs-item">
+        <strong>+40%</strong>
+        <span>Incremento promedio en ventas</span>
+      </div>
+      <div class="hs-div"></div>
+      <div class="hs-item">
+        <strong>+150</strong>
+        <span>Proyectos entregados</span>
+      </div>
+      <div class="hs-div"></div>
+      <div class="hs-item">
+        <strong>5</strong>
+        <span>Ciudades en México</span>
+      </div>
+      <div class="hs-div"></div>
+      <div class="hs-item">
+        <strong>Sin</strong>
+        <span>Contratos forzosos</span>
+      </div>
     </div>
   </div>
-  <div class="ticker" aria-hidden="true"><div class="ticker-track">{['Diseño Web · ','SEO · ','Google Ads · ','META Ads · ','Redes Sociales · ','Email Marketing · ','Branding · ','Analítica · ','Diseño Web · ','SEO · ','Google Ads · ','META Ads · ','Redes Sociales · ','Email Marketing · ','Branding · ','Analítica · '].map(t=><span>{t}</span>)}</div></div>
-</section>
 
-<section class="section bg-dark" id="proceso">
-  <div class="container">
-    <div class="section-head"><p class="label">Metodología</p><h2>Nuestra forma de <span class="grad-text">trabajar</span></h2><p>Como agencia de marketing en CDMX, definimos cada estrategia después de analizar a fondo el modelo de negocio, su mercado y sus oportunidades reales de crecimiento.</p></div>
-    <div class="process-grid">{process_steps.map(s=><div class="process-card"><span class="p-num grad-text">{s.n}</span><h3>{s.title}</h3><p>{s.desc}</p></div>)}</div>
+  <!-- Ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-inner">
+      {['Diseño Web','SEO Premium','Google Ads','META Ads','Redes Sociales','Email Marketing','Branding','Analítica'].map(t => (
+        <span>{t}<em> · </em></span>
+      ))}
+      {['Diseño Web','SEO Premium','Google Ads','META Ads','Redes Sociales','Email Marketing','Branding','Analítica'].map(t => (
+        <span>{t}<em> · </em></span>
+      ))}
+    </div>
   </div>
 </section>
 
+<!-- ══════════════════ TESTIMONIALS HERO ══════════════════ -->
+<section class="section testi-section">
+  <div class="container">
+    <div class="section-label">
+      <span class="label">Resultados reales</span>
+    </div>
+    <h2 class="section-h2">
+      Resultados reales.<br />
+      Historias <span class="grad-text">reales.</span>
+    </h2>
+    <p class="section-sub">Lo que dicen nuestros clientes refleja los resultados que entregamos.</p>
+
+    <div class="testi-grid">
+      {testimonials.map((t, i) => (
+        <div class={`testi-card ${i === 0 ? 'testi-featured' : ''}`}>
+          <div class="testi-quote">"{t.quote}"</div>
+          <div class="testi-meta">
+            <div class="testi-avatar">{t.name[0]}</div>
+            <div>
+              <p class="testi-name">{t.name}</p>
+              <p class="testi-role">{t.role}</p>
+            </div>
+          </div>
+          <div class="testi-metrics">
+            <div class="tm-item">
+              <span class="tm-n grad-text">{t.metric1}</span>
+              <span class="tm-l">{t.label1}</span>
+            </div>
+            <div class="tm-sep"></div>
+            <div class="tm-item">
+              <span class="tm-n grad-text">{t.metric2}</span>
+              <span class="tm-l">{t.label2}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ QUOTE MARQUEE ══════════════════ -->
+<section class="quote-section">
+  <div class="quote-track">
+    <div class="quote-inner">
+      <span>"Construimos presencia digital real para marcas que quieren crecer."</span>
+      <em>★</em>
+      <span>"Estrategia + Ejecución + Resultados."</span>
+      <em>★</em>
+      <span>"Sin contratos forzosos. Sin letra chica. Solo resultados."</span>
+      <em>★</em>
+      <span>"Construimos presencia digital real para marcas que quieren crecer."</span>
+      <em>★</em>
+      <span>"Estrategia + Ejecución + Resultados."</span>
+      <em>★</em>
+      <span>"Sin contratos forzosos. Sin letra chica. Solo resultados."</span>
+      <em>★</em>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SERVICIOS BENTO ══════════════════ -->
 <section class="section" id="servicios">
   <div class="container">
-    <div class="section-head"><p class="label">Servicios</p><h2>Servicios de marketing digital para <span class="grad-text">hacer crecer tu negocio</span></h2><p>Soluciones estratégicas diseñadas para posicionar tu marca, atraer clientes y maximizar tu retorno de inversión.</p></div>
-    <div class="services-grid">{services.map(s=><a href={s.href} class="service-card"><div class="s-top"><span class="s-icon">{s.icon}</span><span class="s-arrow grad-text">→</span></div><h3>{s.title}</h3><p>{s.desc}</p><span class="s-cta">Ver servicio →</span></a>)}</div>
+    <div class="sh-row">
+      <div>
+        <span class="label">Servicios</span>
+        <h2 class="section-h2">Todo lo que necesitas<br />para <span class="grad-text">crecer en digital</span></h2>
+      </div>
+      <p class="sh-right">Soluciones estratégicas diseñadas para posicionar tu marca, atraer clientes y maximizar tu retorno de inversión.</p>
+    </div>
+
+    <div class="bento">
+      {services.map(s => (
+        <a href={s.href} class={`bento-card ${s.wide ? 'bento-wide' : ''}`}>
+          <span class="bc-icon">{s.icon}</span>
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+          <span class="bc-arrow grad-text">Ver servicio →</span>
+        </a>
+      ))}
+    </div>
   </div>
 </section>
 
-<section class="cta-mid">
-  <div class="container"><div class="cta-mid-inner"><div><p class="label">Agencia de Marketing · CDMX</p><h2>Construyamos la estrategia correcta para tu negocio en CDMX</h2><p>Si buscas una agencia de marketing en CDMX que te ayude a crear presencia digital real y sostenible, en Marketing Solutions estamos listos para acompañarte.</p></div><a href="/#contacto" class="btn btn-primary">Quiero mi estrategia →</a></div></div>
+<!-- ══════════════════ PROCESO 3 PASOS ══════════════════ -->
+<section class="section process-section" id="proceso">
+  <div class="container">
+    <div class="sh-row">
+      <div>
+        <span class="label">Metodología</span>
+        <h2 class="section-h2">Nuestro framework<br />de <span class="grad-text">3 pasos</span></h2>
+      </div>
+      <p class="sh-right">Como agencia de marketing en CDMX, definimos cada estrategia después de analizar a fondo tu modelo de negocio y mercado.</p>
+    </div>
+
+    <div class="process-list">
+      {process.map((step, i) => (
+        <div class="process-item">
+          <div class="pi-num grad-text">{step.n}</div>
+          <div class="pi-body">
+            <h3>{step.title}</h3>
+            <p>{step.desc}</p>
+          </div>
+          {i < process.length - 1 && <div class="pi-line" aria-hidden="true"></div>}
+        </div>
+      ))}
+    </div>
+
+    <div class="process-cta">
+      <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary">
+        Quiero mi diagnóstico gratis
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
 </section>
 
+<!-- ══════════════════ PRECIOS ══════════════════ -->
 <section class="section" id="precios">
   <div class="container">
-    <div class="section-head"><p class="label">Precios</p><h2>Nuestros paquetes y <span class="grad-text">precios</span></h2><p>Soluciones diseñadas para cada etapa de tu negocio. Sin contratos forzosos, sin letra chica.</p></div>
-    <div class="pricing-grid">{packages.map(pkg=><div class={`pricing-card ${pkg.featured?'featured':''}`}>{pkg.featured&&<div class="featured-badge">Más popular</div>}<div><span class="pkg-num grad-text">Paquete {pkg.num}</span><h3>{pkg.name}</h3><p class="pkg-desc">{pkg.desc}</p></div><div class="pkg-price"><s class="pkg-before">{pkg.before} {pkg.currency}</s><div class="pkg-main"><span class="pkg-amount">{pkg.price}</span><span class="pkg-currency">{pkg.currency}</span><span class="pkg-tag">Oferta</span></div></div><ul class="pkg-features">{pkg.features.map(f=><li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{f}</li>)}</ul><a href="https://wa.me/525610341236" target="_blank" rel="noopener" class={`btn ${pkg.featured?'btn-primary':'btn-outline'}`} style="width:100%;justify-content:center;">Iniciar Proyecto</a></div>)}</div>
-    <div class="pricing-badges">{['Responsive','SEO','Seguridad SSL','Optimización Speed','Soporte Prioritario'].map(b=><span class="pbadge">✓ {b}</span>)}</div>
+    <div style="text-align:center;margin-bottom:3.5rem;">
+      <span class="label" style="justify-content:center;">Precios</span>
+      <h2 class="section-h2">Paquetes <span class="grad-text">sin contratos</span> forzosos</h2>
+      <p class="section-sub">Diseñados para cada etapa de tu negocio. Sin letra chica, sin sorpresas.</p>
+    </div>
+
+    <div class="pricing-grid">
+      {packages.map(pkg => (
+        <div class={`pricing-card ${pkg.featured ? 'pricing-featured' : ''}`}>
+          {pkg.featured && <div class="pricing-badge">Más popular</div>}
+          <p class="pkg-num grad-text">Paquete {pkg.num}</p>
+          <h3>{pkg.name}</h3>
+          <p class="pkg-desc">{pkg.desc}</p>
+          <div class="pkg-price-block">
+            <s class="pkg-before">{pkg.before} {pkg.currency}</s>
+            <div class="pkg-main">
+              <span class="pkg-amount">{pkg.price}</span>
+              <div>
+                <span class="pkg-currency">{pkg.currency}</span>
+                <span class="pkg-offer">Oferta</span>
+              </div>
+            </div>
+          </div>
+          <ul class="pkg-features">
+            {pkg.features.map(f => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                {f}
+              </li>
+            ))}
+          </ul>
+          <a href="https://wa.me/525610341236" target="_blank" rel="noopener"
+             class={`btn ${pkg.featured ? 'btn-primary' : 'btn-outline'}`}
+             style="width:100%;justify-content:center;">
+            Iniciar Proyecto
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div class="pkg-badges">
+      {['✓ Responsive','✓ SEO','✓ SSL','✓ Speed optimizado','✓ Soporte prioritario'].map(b => (
+        <span>{b}</span>
+      ))}
+    </div>
   </div>
 </section>
 
-<section class="section bg-dark stats-section">
+<!-- ══════════════════ FAQ + CTA LATERAL ══════════════════ -->
+<section class="section faq-section">
   <div class="container">
-    <div class="section-head" style="text-align:center;max-width:600px;margin-left:auto;margin-right:auto;"><p class="label" style="justify-content:center;">Resultados</p><h2>Juntos impulsamos tu <span class="grad-text">crecimiento</span></h2><p>Resultados reales para negocios reales. Así se ven los números de nuestros clientes.</p></div>
-    <div class="stats-grid"><div class="stat-card"><span class="stat-n grad-text">+40%</span><span class="stat-l">Incremento promedio en ventas de nuestros clientes</span></div><div class="stat-card"><span class="stat-n grad-text">+85%</span><span class="stat-l">Mejora en tasa de retención de clientes</span></div><div class="stat-card"><span class="stat-n grad-text">+120%</span><span class="stat-l">Incremento promedio en tráfico orgánico</span></div><div class="stat-card"><span class="stat-n grad-text">+3,000</span><span class="stat-l">Total de leads generados para nuestros clientes</span></div></div>
-    <div style="text-align:center;margin-top:2.5rem;"><a href="/#contacto" class="btn btn-primary">Quiero resultados →</a></div>
+    <div class="faq-layout">
+      <div class="faq-left">
+        <span class="label">FAQ</span>
+        <h2 class="section-h2">Preguntas <span class="grad-text">frecuentes</span></h2>
+        <p>Todo lo que necesitas saber sobre cómo trabajamos y lo que podemos hacer por tu negocio.</p>
+        <div class="faq-cta-box">
+          <p>¿Tienes más preguntas?</p>
+          <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary">Contáctanos →</a>
+        </div>
+      </div>
+      <div class="faq-list">
+        {faqs.map((faq, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary class="faq-q">
+              {faq.q}
+              <svg class="faq-ico" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <p class="faq-a">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section bg-dark">
-  <div class="container faq-wrap">
-    <div class="section-head" style="margin-bottom:0;"><p class="label">FAQ</p><h2>Preguntas <span class="grad-text">frecuentes</span></h2><p>Todo lo que necesitas saber sobre cómo trabajamos y lo que podemos hacer por tu negocio.</p></div>
-    <div class="faq-list">{faqs.map((faq,i)=><details class="faq-item" open={i===0}><summary class="faq-q">{faq.q}<svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><p class="faq-a">{faq.a}</p></details>)}</div>
+<!-- ══════════════════ CTA FINAL ══════════════════ -->
+<section class="cta-final">
+  <div class="cf-glow" aria-hidden="true"></div>
+  <div class="container cf-inner">
+    <div class="sp-pill" style="margin:0 auto 2rem;">
+      <div class="sp-avatars">
+        <span class="sp-av" style="background:linear-gradient(135deg,#4F6EF7,#8B5CF6)">M</span>
+        <span class="sp-av" style="background:linear-gradient(135deg,#8B5CF6,#ec4899)">L</span>
+        <span class="sp-av" style="background:linear-gradient(135deg,#4F6EF7,#06b6d4)">R</span>
+      </div>
+      <span>+150 negocios ya crecen con nosotros</span>
+    </div>
+    <h2>
+      Haz despegar tu<br />
+      presencia <span class="grad-text">digital</span>
+    </h2>
+    <p>Si buscas una agencia de marketing en CDMX que te ayude a crear presencia digital real y sostenible, estamos listos para acompañarte.</p>
+    <div class="cf-actions">
+      <a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="btn btn-primary btn-lg">
+        Consulta gratis por WhatsApp
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </a>
+      <a href="mailto:contacto@marketingsolutionsmx.com" class="btn btn-outline">Enviar un correo</a>
+    </div>
   </div>
 </section>
 
-<section class="section" id="contacto">
-  <div class="container"><div class="contact-grid"><div class="contact-left"><p class="label">Contacto</p><h2>Haz Despegar tu presencia <span class="grad-text">Digital</span></h2><p>Cuéntanos sobre tu negocio y te preparamos un plan de acción personalizado sin costo ni compromiso.</p><div class="contact-links"><a href="https://wa.me/525610341236" target="_blank" rel="noopener" class="contact-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>+52 56 1034 1236</a><a href="mailto:contacto@marketingsolutionsmx.com" class="contact-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>contacto@marketingsolutionsmx.com</a></div></div>
-  <form class="contact-form" name="contacto" netlify><div class="form-row"><div class="form-group"><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required/></div><div class="form-group"><label for="empresa">Empresa</label><input type="text" id="empresa" name="empresa" placeholder="Tu empresa"/></div></div><div class="form-group"><label for="email">Correo electrónico</label><input type="email" id="email" name="email" placeholder="tu@email.com" required/></div><div class="form-group"><label for="servicio">¿Qué servicio te interesa?</label><select id="servicio" name="servicio"><option value="">Selecciona un servicio...</option><option>Gestión de Redes Sociales</option><option>Diseño Web</option><option>SEO Premium</option><option>Google Ads</option><option>Campañas META</option><option>Email Marketing</option><option>Identidad de Marca</option><option>Estrategia completa</option></select></div><div class="form-group"><label for="mensaje">Mensaje</label><textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu negocio..."></textarea></div><button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Enviar <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><p class="form-note">También por <a href="https://wa.me/525610341236" target="_blank" rel="noopener">WhatsApp</a> — respondemos en menos de 24h.</p></form></div></div>
-</section>
 </Layout>
 
 <style>
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:72px;overflow:hidden;background:var(--bg-deep)}
-.hero-glow{position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:1000px;height:700px;background:radial-gradient(ellipse at center,rgba(79,110,247,.2) 0%,rgba(139,92,246,.12) 40%,transparent 70%);pointer-events:none}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(79,110,247,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(79,110,247,.06) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 40%,transparent 100%)}
-.hero-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:1.75rem;padding-top:5rem;padding-bottom:4rem}
-.hero-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(79,110,247,.1);border:1px solid rgba(79,110,247,.25);border-radius:var(--radius-full);padding:8px 18px;font-size:.82rem;font-weight:600;color:var(--gray-300)}
-.pill-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero-inner h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:1.08;letter-spacing:-.03em}
-.hero-inner>p{font-size:1.1rem;color:var(--gray-400);max-width:52ch;line-height:1.75}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
-.ticker{width:100%;overflow:hidden;border-top:1px solid var(--border);padding:1.25rem 0;margin-top:auto;position:relative;z-index:1}
-.ticker-track{display:flex;white-space:nowrap;animation:ticker 24s linear infinite}
-.ticker-track span{font-size:.85rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-500);padding:0 1.5rem}
+/* ══ HERO ══ */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:72px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.hb-glow1{position:absolute;top:-20%;left:30%;width:700px;height:700px;background:radial-gradient(circle,rgba(79,110,247,.22) 0%,transparent 65%);border-radius:50%}
+.hb-glow2{position:absolute;top:10%;right:10%;width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,.15) 0%,transparent 65%);border-radius:50%}
+.hb-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(79,110,247,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(79,110,247,.05) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 70% at 50% 0%,black 30%,transparent 100%)}
+.hero-inner{position:relative;z-index:1;padding:5rem 0 3rem;display:flex;flex-direction:column;align-items:flex-start;gap:2rem}
+
+/* Social proof pill */
+.sp-pill{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:8px 16px 8px 8px;font-size:.82rem;font-weight:500;color:var(--gray-300)}
+.sp-avatars{display:flex}
+.sp-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff;margin-right:-8px;border:2px solid var(--bg-deep)}
+.sp-avatars .sp-av:last-child{margin-right:0}
+
+.hero-inner h1{font-size:clamp(2.75rem,6.5vw,5.5rem);font-weight:800;line-height:1.06;letter-spacing:-.035em}
+.hero-inner h1 em{font-style:normal;background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.1rem;color:var(--gray-400);max-width:50ch;line-height:1.75}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.btn-lg{padding:16px 32px;font-size:1rem}
+.btn-ghost-white{display:inline-flex;align-items:center;gap:8px;padding:16px 28px;border-radius:var(--radius-full);font-size:1rem;font-weight:600;color:var(--gray-300);border:1.5px solid rgba(255,255,255,.12);background:transparent;transition:var(--transition)}
+.btn-ghost-white:hover{color:#fff;border-color:rgba(255,255,255,.3)}
+
+.hero-stats{display:flex;align-items:center;gap:2rem;padding:1.5rem 2rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);flex-wrap:wrap}
+.hs-item{display:flex;flex-direction:column;gap:3px}
+.hs-item strong{font-size:1.5rem;font-weight:800;background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.hs-item span{font-size:.78rem;color:var(--gray-400)}
+.hs-div{width:1px;height:36px;background:rgba(255,255,255,.1)}
+
+/* Ticker */
+.ticker{width:100%;overflow:hidden;border-top:1px solid var(--border);padding:1rem 0;margin-top:auto;position:relative;z-index:1}
+.ticker-inner{display:flex;white-space:nowrap;animation:ticker 25s linear infinite}
+.ticker-inner span{font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500);padding:0 1rem}
+.ticker-inner em{color:var(--blue);font-style:normal}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══ SECCIONES COMUNES ══ */
 .section{padding:var(--section-gap) 0}
-.bg-dark{background:var(--bg-dark)}
-.section-head{max-width:620px;margin-bottom:3.5rem}
-.section-head h2{font-size:clamp(1.85rem,4vw,2.75rem);margin-bottom:1rem;line-height:1.2}
-.section-head p{color:var(--gray-400);font-size:1rem;line-height:1.7}
-.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden}
-.process-card{background:var(--bg-card);padding:2.25rem 2rem;display:flex;flex-direction:column;gap:.75rem;transition:background .2s}
-.process-card:hover{background:rgba(79,110,247,.06)}
-.p-num{font-size:2.25rem;font-weight:800;line-height:1}
-.process-card h3{font-size:.95rem;font-weight:700;line-height:1.4}
-.process-card p{font-size:.85rem;color:var(--gray-400);line-height:1.6}
-.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden}
-.service-card{background:var(--bg-card);padding:2rem 1.75rem;display:flex;flex-direction:column;gap:.75rem;transition:background .2s;text-decoration:none}
-.service-card:hover{background:rgba(79,110,247,.07)}
-.s-top{display:flex;justify-content:space-between;align-items:center}
-.s-icon{font-size:1.75rem}
-.s-arrow{font-size:1.1rem;opacity:0;transition:opacity .2s,transform .2s;transform:translateX(-6px)}
-.service-card:hover .s-arrow{opacity:1;transform:translateX(0)}
-.service-card h3{font-size:1rem;font-weight:700;color:var(--white)}
-.service-card p{font-size:.85rem;color:var(--gray-400);line-height:1.6;flex:1}
-.s-cta{font-size:.8rem;font-weight:600;color:var(--blue);margin-top:.25rem}
-.cta-mid{padding:4rem 0;background:linear-gradient(135deg,rgba(79,110,247,.12) 0%,rgba(139,92,246,.08) 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.cta-mid-inner{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
-.cta-mid-inner h2{font-size:clamp(1.5rem,3vw,2.25rem);margin-bottom:.75rem}
-.cta-mid-inner p{color:var(--gray-400);font-size:.95rem;line-height:1.7;max-width:55ch}
+.label{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem}
+.section-h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin-bottom:1rem}
+.section-sub{color:var(--gray-400);font-size:1rem;line-height:1.7;max-width:55ch}
+.section-label{margin-bottom:.5rem}
+.sh-row{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3.5rem}
+.sh-right{color:var(--gray-400);font-size:1rem;line-height:1.7}
+
+/* ══ TESTIMONIALS ══ */
+.testi-section{background:var(--bg-dark)}
+.testi-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1.25rem;margin-top:3rem}
+.testi-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:2rem;display:flex;flex-direction:column;gap:1.5rem;transition:border-color .2s,transform .2s}
+.testi-card:hover{border-color:var(--border-hover);transform:translateY(-4px)}
+.testi-featured{border-color:rgba(79,110,247,.35)}
+.testi-quote{font-size:1rem;line-height:1.7;color:var(--gray-300);font-style:italic}
+.testi-featured .testi-quote{font-size:1.1rem}
+.testi-meta{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;flex-shrink:0}
+.testi-name{font-size:.9rem;font-weight:700;margin-bottom:2px}
+.testi-role{font-size:.78rem;color:var(--gray-400)}
+.testi-metrics{display:flex;align-items:center;gap:1.5rem;padding:1rem 0 0;border-top:1px solid var(--border)}
+.tm-item{display:flex;flex-direction:column;gap:3px}
+.tm-n{font-size:1.5rem;font-weight:800;line-height:1}
+.tm-l{font-size:.75rem;color:var(--gray-400)}
+.tm-sep{width:1px;height:32px;background:var(--border)}
+
+/* ══ QUOTE MARQUEE ══ */
+.quote-section{overflow:hidden;padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(79,110,247,.04)}
+.quote-track{overflow:hidden}
+.quote-inner{display:flex;white-space:nowrap;animation:ticker 30s linear infinite}
+.quote-inner span{font-size:1rem;font-weight:700;color:var(--gray-400);padding:0 2.5rem;letter-spacing:-.01em}
+.quote-inner em{color:var(--blue);font-style:normal;font-size:1.2rem}
+
+/* ══ BENTO SERVICIOS ══ */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden}
+.bento-card{background:var(--bg-card);padding:2rem 1.75rem;display:flex;flex-direction:column;gap:.75rem;text-decoration:none;transition:background .2s;position:relative}
+.bento-card:hover{background:rgba(79,110,247,.08)}
+.bento-wide{grid-column:span 2}
+.bc-icon{font-size:2rem;line-height:1}
+.bento-card h3{font-size:1rem;font-weight:700;color:#fff}
+.bento-card p{font-size:.85rem;color:var(--gray-400);line-height:1.6;flex:1}
+.bc-arrow{font-size:.85rem;font-weight:700;opacity:0;transform:translateX(-6px);transition:opacity .2s,transform .2s}
+.bento-card:hover .bc-arrow{opacity:1;transform:translateX(0)}
+
+/* ══ PROCESO ══ */
+.process-section{background:var(--bg-dark)}
+.process-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;margin-top:1rem}
+.process-item{display:grid;grid-template-columns:80px 1fr;align-items:start;gap:2rem;padding:2.5rem;background:var(--bg-card);border-bottom:1px solid var(--border);position:relative;transition:background .2s}
+.process-item:last-child{border-bottom:none}
+.process-item:hover{background:rgba(79,110,247,.06)}
+.pi-num{font-size:2rem;font-weight:800;line-height:1;padding-top:.25rem}
+.pi-body h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.pi-body p{font-size:.9rem;color:var(--gray-400);line-height:1.65}
+.process-cta{margin-top:2.5rem;display:flex;justify-content:center}
+
+/* ══ PRECIOS ══ */
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
-.pricing-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:2.25rem;display:flex;flex-direction:column;gap:1.75rem;position:relative;transition:border-color .2s,transform .2s}
+.pricing-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:2.25rem;display:flex;flex-direction:column;gap:1.5rem;position:relative;transition:border-color .2s,transform .2s}
 .pricing-card:hover{border-color:var(--border-hover);transform:translateY(-4px)}
-.pricing-card.featured{border-color:rgba(79,110,247,.5);box-shadow:0 0 48px rgba(79,110,247,.1)}
-.featured-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--grad);color:var(--white);font-size:.72rem;font-weight:700;padding:4px 18px;border-radius:var(--radius-full);white-space:nowrap}
-.pkg-num{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px}
+.pricing-featured{border-color:rgba(79,110,247,.45);box-shadow:0 0 56px rgba(79,110,247,.12)}
+.pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:.7rem;font-weight:700;padding:4px 18px;border-radius:100px;white-space:nowrap}
+.pkg-num{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .pricing-card h3{font-size:1.2rem;font-weight:800}
-.pkg-desc{font-size:.875rem;color:var(--gray-400)}
-.pkg-price{display:flex;flex-direction:column;gap:4px}
-.pkg-before{font-size:.85rem;color:var(--gray-600)}
+.pkg-desc{font-size:.85rem;color:var(--gray-400)}
+.pkg-price-block{display:flex;flex-direction:column;gap:4px}
+.pkg-before{font-size:.82rem;color:var(--gray-600)}
 .pkg-main{display:flex;align-items:baseline;gap:8px}
 .pkg-amount{font-size:2.5rem;font-weight:800;background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.pkg-currency{font-size:.9rem;color:var(--gray-400)}
-.pkg-tag{font-size:.7rem;font-weight:700;background:rgba(79,110,247,.15);color:var(--blue);border-radius:var(--radius-full);padding:2px 10px;border:1px solid var(--border)}
+.pkg-currency{font-size:.85rem;color:var(--gray-400)}
+.pkg-offer{font-size:.68rem;font-weight:700;background:rgba(79,110,247,.15);color:var(--blue);border:1px solid var(--border);border-radius:100px;padding:2px 8px;margin-left:4px}
 .pkg-features{list-style:none;display:flex;flex-direction:column;gap:10px}
 .pkg-features li{display:flex;align-items:center;gap:10px;font-size:.875rem;color:var(--gray-300)}
 .pkg-features svg{color:var(--blue);flex-shrink:0}
-.pricing-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:2.5rem}
-.pbadge{font-size:.8rem;font-weight:500;color:var(--gray-400);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--radius-full);padding:6px 16px}
-.stats-section{}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;margin-top:3rem}
-.stat-card{background:var(--bg-card);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:.75rem;text-align:center;align-items:center}
-.stat-n{font-size:2.75rem;font-weight:800;line-height:1}
-.stat-l{font-size:.85rem;color:var(--gray-400);line-height:1.5;max-width:18ch;text-align:center}
-.faq-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:6rem;align-items:start}
+.pkg-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:2rem}
+.pkg-badges span{font-size:.78rem;color:var(--gray-400);background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:100px;padding:5px 14px}
+
+/* ══ FAQ ══ */
+.faq-section{background:var(--bg-dark)}
+.faq-layout{display:grid;grid-template-columns:1fr 1.5fr;gap:6rem;align-items:start}
+.faq-left .section-h2{margin-bottom:1rem}
+.faq-left>p{color:var(--gray-400);font-size:.95rem;line-height:1.7;margin-bottom:2rem}
+.faq-cta-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;display:flex;flex-direction:column;gap:1rem}
+.faq-cta-box p{font-size:.9rem;color:var(--gray-400)}
 .faq-list{border-top:1px solid var(--border)}
 .faq-item{border-bottom:1px solid var(--border)}
-.faq-q{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 0;font-size:.95rem;font-weight:600;cursor:pointer;list-style:none;color:var(--white)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 0;font-size:.95rem;font-weight:600;cursor:pointer;list-style:none;color:#fff}
 .faq-q::-webkit-details-marker{display:none}
-.faq-chevron{flex-shrink:0;color:var(--gray-400);transition:transform .3s}
-details[open] .faq-chevron{transform:rotate(180deg)}
+.faq-ico{flex-shrink:0;color:var(--gray-400);transition:transform .3s}
+details[open] .faq-ico{transform:rotate(180deg)}
 .faq-a{padding-bottom:1.5rem;font-size:.875rem;color:var(--gray-400);line-height:1.7}
-.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
-.contact-left h2{font-size:clamp(1.75rem,3vw,2.5rem);margin-bottom:1rem}
-.contact-left>p{color:var(--gray-400);font-size:.95rem;line-height:1.7;margin-bottom:2rem}
-.contact-links{display:flex;flex-direction:column;gap:1rem}
-.contact-link{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--gray-400);transition:color .2s}
-.contact-link:hover{color:var(--blue)}
-.contact-link svg{color:var(--blue);flex-shrink:0}
-.contact-form{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:2.5rem;display:flex;flex-direction:column;gap:1.25rem}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.form-group{display:flex;flex-direction:column;gap:6px}
-.form-group label{font-size:.78rem;font-weight:600;color:var(--gray-400);letter-spacing:.03em}
-.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px;font-family:var(--font);font-size:.875rem;color:var(--white);transition:border-color .2s;outline:none;resize:vertical}
-.form-group input::placeholder,.form-group textarea::placeholder{color:var(--gray-600)}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,110,247,.1)}
-.form-group select option{background:var(--bg-card)}
-.form-note{font-size:.78rem;color:var(--gray-500);text-align:center}
-.form-note a{color:var(--blue)}
-@media(max-width:1100px){.services-grid{grid-template-columns:repeat(2,1fr)}.stats-grid{grid-template-columns:repeat(2,1fr)}.pricing-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
-@media(max-width:900px){.process-grid{grid-template-columns:repeat(2,1fr)}.cta-mid-inner{grid-template-columns:1fr}.faq-wrap{grid-template-columns:1fr;gap:2rem}.contact-grid{grid-template-columns:1fr;gap:3rem}}
-@media(max-width:600px){.services-grid{grid-template-columns:1fr}.process-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}}
+
+/* ══ CTA FINAL ══ */
+.cta-final{position:relative;padding:8rem 0;text-align:center;overflow:hidden;background:var(--bg-deep);border-top:1px solid var(--border)}
+.cf-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:600px;background:radial-gradient(circle,rgba(79,110,247,.2) 0%,rgba(139,92,246,.12) 40%,transparent 70%);pointer-events:none}
+.cf-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+.cf-inner h2{font-size:clamp(2.5rem,6vw,5rem);font-weight:800;letter-spacing:-.03em;line-height:1.08;max-width:14ch}
+.cf-inner p{color:var(--gray-400);font-size:1.05rem;max-width:48ch;line-height:1.7}
+.cf-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:.5rem}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1100px){
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .bento-wide{grid-column:span 1}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .pricing-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto}
+}
+@media(max-width:900px){
+  .sh-row{grid-template-columns:1fr;gap:1rem}
+  .testi-grid{grid-template-columns:1fr}
+  .faq-layout{grid-template-columns:1fr;gap:3rem}
+  .hero-stats{gap:1.5rem}
+  .hs-div{display:none}
+}
+@media(max-width:600px){
+  .bento{grid-template-columns:1fr}
+  .hero-inner h1{font-size:2.5rem}
+  .process-item{grid-template-columns:56px 1fr;gap:1rem;padding:1.75rem}
+}
 </style>
